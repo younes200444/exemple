@@ -31,7 +31,6 @@ export function Reservation() {
       id="reservation"
       soft
       divider
-      aurora="warm"
       className="texture-ember"
     >
       <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">

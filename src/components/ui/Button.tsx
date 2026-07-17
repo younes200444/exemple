@@ -27,15 +27,15 @@ type ButtonProps = {
 
 const variants: Record<Variant, string> = {
   primary:
-    "btn-gold cta-glow hover:-translate-y-1.5 hover:scale-[1.045] active:scale-[0.98]",
+    "btn-gold cta-glow hover:-translate-y-1 hover:scale-[1.03] active:scale-[0.98]",
   secondary:
-    "bg-charcoal text-champagne shadow-[var(--shadow-lift)] hover:bg-charcoal-deep hover:-translate-y-1.5 hover:scale-[1.04]",
-  wine: "bg-gradient-to-br from-wine to-[#7a1e24] text-cream shadow-[var(--shadow-wine)] hover:from-[#b8323a] hover:to-wine hover:-translate-y-1.5 hover:scale-[1.04]",
+    "bg-charcoal text-champagne shadow-[var(--shadow-lift)] hover:bg-charcoal-deep hover:-translate-y-1",
+  wine: "bg-gradient-to-br from-wine to-[#7a1e24] text-cream shadow-[var(--shadow-wine)] hover:from-[#b8323a] hover:to-wine hover:-translate-y-1",
   ghost: "bg-transparent text-fg hover:bg-ember/10 hover:text-ember",
   outline:
-    "border-2 border-gold/50 bg-transparent text-fg hover:border-ember hover:bg-ember/10 hover:text-ember hover:-translate-y-1 hover:scale-[1.03]",
+    "border-2 border-gold/50 bg-transparent text-fg hover:border-ember hover:bg-ember/10 hover:text-ember hover:-translate-y-0.5",
   outlineLight:
-    "border-2 border-champagne/70 bg-transparent text-white hover:border-ember hover:text-gold-bright hover:bg-ember/15 hover:-translate-y-1 hover:scale-[1.03]",
+    "border-2 border-champagne/70 bg-transparent text-white hover:border-gold-bright hover:text-champagne hover:bg-white/8 hover:-translate-y-0.5",
 };
 
 const sizes: Record<Size, string> = {

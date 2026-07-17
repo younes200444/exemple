@@ -9,6 +9,7 @@ import {
 import type { ReactNode } from "react";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface MagneticProps {
   children: ReactNode;
@@ -16,20 +17,21 @@ interface MagneticProps {
   strength?: number;
 }
 
-/** Button follows cursor slightly within a magnetic radius. */
+/** Desktop fine-pointer only — no cost on touch devices. */
 export function Magnetic({
   children,
   className,
-  strength = 28,
+  strength = 22,
 }: MagneticProps) {
   const reduce = useReducedMotion();
+  const finePointer = useMediaQuery("(hover: hover) and (pointer: fine)");
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 280, damping: 18, mass: 0.4 });
-  const springY = useSpring(y, { stiffness: 280, damping: 18, mass: 0.4 });
+  const springX = useSpring(x, { stiffness: 260, damping: 20, mass: 0.35 });
+  const springY = useSpring(y, { stiffness: 260, damping: 20, mass: 0.35 });
 
-  if (reduce) {
+  if (reduce || !finePointer) {
     return <div className={className}>{children}</div>;
   }
 

@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
-import { Aurora } from "@/components/ui/Aurora";
 
 interface SectionProps {
   children: ReactNode;
@@ -10,7 +9,6 @@ interface SectionProps {
   muted?: boolean;
   dark?: boolean;
   divider?: boolean;
-  aurora?: "warm" | "wine" | "soft";
 }
 
 export function Section({
@@ -21,7 +19,6 @@ export function Section({
   muted,
   dark,
   divider,
-  aurora,
 }: SectionProps) {
   return (
     <section
@@ -35,7 +32,6 @@ export function Section({
         className
       )}
     >
-      {aurora && <Aurora variant={aurora} />}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8">
         {children}
       </div>

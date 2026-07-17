@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+/** Defaults to false (mobile-safe) until client media is known. */
 export function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);
 

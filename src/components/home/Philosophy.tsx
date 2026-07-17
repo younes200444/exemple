@@ -4,8 +4,8 @@ import Image from "next/image";
 import { philosophy } from "@/data/content";
 import { Section } from "@/components/ui/Section";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { ScrambleText } from "@/components/ui/ScrambleText";
 
+/** Posed craftsmanship — no scramble/aurora competing with Signature ahead. */
 export function Philosophy() {
   return (
     <Section
@@ -20,7 +20,7 @@ export function Philosophy() {
               Savoir-faire
             </p>
             <h2 className="mt-4 font-display text-4xl font-bold leading-[1.02] text-fg sm:text-5xl md:text-6xl">
-              <ScrambleText text="Tradition." />
+              Tradition.
             </h2>
             <div className="gold-rule mt-6" />
             <p className="mt-6 max-w-xs text-base text-fg-muted">
@@ -30,8 +30,8 @@ export function Philosophy() {
 
           <div className="mt-10 flex flex-wrap gap-3">
             {philosophy.map((item, i) => (
-              <ScrollReveal key={item.id} delay={i * 0.06}>
-                <span className="border border-wine/30 bg-cream px-4 py-2 font-display text-lg text-fg transition-all duration-300 hover:scale-105 hover:border-ember hover:bg-wine-soft hover:text-wine hover:shadow-[var(--shadow-wine)]">
+              <ScrollReveal key={item.id} delay={i * 0.05}>
+                <span className="border border-wine/30 bg-cream px-4 py-2 font-display text-lg text-fg transition-colors duration-300 hover:border-ember hover:bg-wine-soft hover:text-wine">
                   {item.title}
                 </span>
               </ScrollReveal>
@@ -39,7 +39,7 @@ export function Philosophy() {
           </div>
         </div>
 
-        <ScrollReveal delay={0.12} direction="clip" className="lg:col-span-7">
+        <ScrollReveal delay={0.1} direction="clip" className="lg:col-span-7">
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             <div className="img-zoom relative aspect-[3/4] overflow-hidden">
               <Image

@@ -12,32 +12,27 @@ import { Reservation } from "@/components/home/Reservation";
 import { EditorialBreak } from "@/components/ui/EditorialBreak";
 import { BonAppetit } from "@/components/home/BonAppetit";
 
+/**
+ * Rhythm: high → calm → contrast → calm → MEMORABLE → calm → …
+ * Effects are intentional, not repeated at the same intensity.
+ */
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <EditorialBreak text="L'ART DU GOÛT" className="texture-ember" />
+      <EditorialBreak text="L'ART DU GOÛT" className="bg-bg" />
       <Experience />
-      <EditorialBreak
-        text="AUTHENTIQUE"
-        speed="punchy"
-        className="section-dark"
-      />
+      <EditorialBreak text="AUTHENTIQUE" className="section-dark" />
       <Philosophy />
       <EditorialBreak text="SIGNATURE" className="texture-wine-light" />
       <Signature />
       <Stats />
-      <EditorialBreak text="LA CARTE" speed="punchy" className="texture-ember" />
+      <EditorialBreak text="LA CARTE" className="bg-bg" />
       <Menu />
-      <EditorialBreak text="INSTANTS" className="bg-bg-muted" />
       <Gallery />
       <BonAppetit />
       <WhyChooseUs />
-      <EditorialBreak
-        text="AVIS"
-        speed="punchy"
-        className="section-dark"
-      />
+      <EditorialBreak text="AVIS" className="section-dark" />
       <Reviews />
       <Location />
       <Reservation />

@@ -5,14 +5,14 @@ import { Section } from "@/components/ui/Section";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ScrambleText } from "@/components/ui/ScrambleText";
 
+/** Calm section after Hero — one intentional scramble, no aurora. */
 export function Experience() {
   return (
     <Section
       id="experience"
       soft
       divider
-      aurora="soft"
-      className="!py-16 sm:!py-20 md:!py-28 texture-ember"
+      className="!py-16 sm:!py-20 md:!py-28"
     >
       <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-6">
         <ScrollReveal direction="clip" className="relative lg:col-span-7">
@@ -29,14 +29,14 @@ export function Experience() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-4 left-4 border border-ember/60 bg-charcoal px-5 py-3 text-gold-bright shadow-[var(--shadow-ember)] sm:-bottom-5 sm:left-auto sm:right-6 lg:right-4">
+            <div className="absolute -bottom-4 left-4 border border-ember/50 bg-charcoal px-5 py-3 text-gold-bright shadow-[var(--shadow-ember)] sm:-bottom-5 sm:left-auto sm:right-6 lg:right-4">
               <p className="font-display text-xl sm:text-2xl">Rodez</p>
             </div>
           </div>
         </ScrollReveal>
 
         <ScrollReveal
-          delay={0.1}
+          delay={0.08}
           direction="right"
           className="flex flex-col justify-center lg:col-span-5 lg:pl-6"
         >

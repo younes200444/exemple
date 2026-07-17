@@ -265,21 +265,21 @@ body {
   z-index: -1;
   background: radial-gradient(
     ellipse at center,
-    rgba(224, 90, 40, 0.65),
-    rgba(224, 160, 48, 0.35),
+    rgba(224, 90, 40, 0.55),
+    rgba(224, 160, 48, 0.28),
     transparent 70%
   );
-  opacity: 0.9;
-  filter: blur(16px);
+  opacity: 0.85;
+  filter: blur(14px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .cta-glow:hover::before {
   opacity: 1;
-  transform: scale(1.12);
+  transform: scale(1.08);
 }
 
-/* Living aurora blobs */
+/* Aurora — animated on desktop; static & lighter on mobile */
 .aurora {
   pointer-events: none;
   position: absolute;
@@ -292,15 +292,15 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(55px);
-  opacity: 0.7;
+  opacity: 0.55;
   will-change: transform;
-  animation: aurora-drift 12s ease-in-out infinite alternate;
+  animation: aurora-drift 16s ease-in-out infinite alternate;
 }
 
 .aurora-blob--gold {
   width: min(50vw, 420px);
   height: min(50vw, 420px);
-  background: radial-gradient(circle, rgba(224, 160, 48, 0.55), transparent 70%);
+  background: radial-gradient(circle, rgba(224, 160, 48, 0.5), transparent 70%);
   top: -10%;
   left: -5%;
 }
@@ -308,21 +308,21 @@ body {
 .aurora-blob--wine {
   width: min(45vw, 380px);
   height: min(45vw, 380px);
-  background: radial-gradient(circle, rgba(160, 40, 48, 0.45), transparent 70%);
+  background: radial-gradient(circle, rgba(160, 40, 48, 0.4), transparent 70%);
   bottom: -15%;
   right: -8%;
   animation-delay: -4s;
-  animation-duration: 18s;
+  animation-duration: 20s;
 }
 
 .aurora-blob--ember {
   width: min(40vw, 320px);
   height: min(40vw, 320px);
-  background: radial-gradient(circle, rgba(224, 90, 40, 0.4), transparent 70%);
+  background: radial-gradient(circle, rgba(224, 90, 40, 0.35), transparent 70%);
   top: 40%;
   left: 45%;
   animation-delay: -8s;
-  animation-duration: 16s;
+  animation-duration: 18s;
 }
 
 @keyframes aurora-drift {
@@ -330,10 +330,34 @@ body {
     transform: translate(0, 0) scale(1);
   }
   50% {
-    transform: translate(40px, -30px) scale(1.15);
+    transform: translate(28px, -22px) scale(1.08);
   }
   100% {
-    transform: translate(-30px, 25px) scale(0.95);
+    transform: translate(-22px, 18px) scale(0.96);
+  }
+}
+
+@media (max-width: 767px) {
+  .aurora-blob {
+    animation: none !important;
+    filter: blur(36px);
+    opacity: 0.3;
+    will-change: auto;
+  }
+
+  .aurora-blob--wine,
+  .aurora-blob--ember {
+    display: none;
+  }
+
+  .cta-glow::before {
+    inset: -8px;
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+
+  .cta-glow:hover::before {
+    transform: none;
   }
 }
 

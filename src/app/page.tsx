@@ -13,26 +13,35 @@ import { EditorialBreak } from "@/components/ui/EditorialBreak";
 import { BonAppetit } from "@/components/home/BonAppetit";
 
 /**
- * Rhythm: high → calm → contrast → calm → MEMORABLE → calm → …
- * Effects are intentional, not repeated at the same intensity.
+ * Editorial breaks: only keep moments that earn their space (Option B).
+ * Redundant watermarks removed (Option A) — sections chain cleanly.
  */
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <EditorialBreak text="L'ART DU GOÛT" className="bg-bg" />
+      <EditorialBreak
+        title="L'art du goût"
+        line="Des produits frais, choisis avec exigence — chaque assiette a une histoire."
+        image="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80"
+        imageAlt="Table dressée, lumière chaude"
+        tone="warm"
+      />
       <Experience />
-      <EditorialBreak text="AUTHENTIQUE" className="section-dark" />
       <Philosophy />
-      <EditorialBreak text="SIGNATURE" className="texture-wine-light" />
       <Signature />
       <Stats />
-      <EditorialBreak text="LA CARTE" className="bg-bg" />
       <Menu />
       <Gallery />
       <BonAppetit />
       <WhyChooseUs />
-      <EditorialBreak text="AVIS" className="section-dark" />
+      <EditorialBreak
+        title="La table qui se partage"
+        line="Ceux qui sont venus en parlent mieux que nous."
+        image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80"
+        imageAlt="Salle de la brasserie"
+        tone="dark"
+      />
       <Reviews />
       <Location />
       <Reservation />

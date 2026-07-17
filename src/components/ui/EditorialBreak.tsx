@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   motion,
   useReducedMotion,
@@ -8,68 +9,121 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
+import { MOTION_EASE } from "@/components/ui/ScrollReveal";
 
-interface EditorialBreakProps {
-  text: string;
+export interface EditorialMomentProps {
+  title: string;
+  line: string;
+  image: string;
+  imageAlt: string;
+  /** Dark cinematic vs warmer cream-tinted overlay */
+  tone?: "dark" | "warm";
   className?: string;
-  speed?: "slow" | "punchy";
 }
 
-/** Breathing watermark between sections — motion only, no competing aurora. */
+/**
+ * Compact editorial beat (≤ ~33vh): photo + overlay + title + line.
+ * Not a watermark — a composed moment with scroll parallax.
+ */
 export function EditorialBreak({
-  text,
+  title,
+  line,
+  image,
+  imageAlt,
+  tone = "dark",
   className,
-  speed = "slow",
-}: EditorialBreakProps) {
+}: EditorialMomentProps) {
   const reduce = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    speed === "slow" ? ["-5%", "5%"] : ["-10%", "10%"]
-  );
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.35, 0.65, 1],
-    [0.12, 0.55, 0.55, 0.12]
-  );
+
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.12, 1.02]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [18, -18]);
 
   return (
-    <div
+    <section
       ref={ref}
       className={cn(
-        "relative overflow-hidden py-10 sm:py-14 md:py-20",
+        "relative isolate overflow-hidden",
+        "min-h-[28vh] max-h-[34vh] sm:min-h-[30vh] sm:max-h-[32vh]",
         className
       )}
-      aria-hidden
+      aria-label={title}
     >
-      <motion.p
-        className="relative select-none whitespace-nowrap text-center font-display text-[16vw] font-bold leading-none tracking-[-0.045em] text-transparent sm:text-[12vw] md:text-[9.5vw]"
-        style={
-          reduce
-            ? {
-                backgroundImage:
-                  "linear-gradient(115deg, rgba(224,160,48,0.16), rgba(160,40,48,0.12), rgba(224,90,40,0.14))",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-              }
-            : {
-                x,
-                opacity,
-                backgroundImage:
-                  "linear-gradient(115deg, rgba(224,160,48,0.2), rgba(160,40,48,0.14), rgba(224,90,40,0.18))",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-              }
-        }
+      <motion.div
+        className="absolute inset-[-12%] will-change-transform"
+        style={reduce ? undefined : { y: imgY, scale: imgScale }}
       >
-        {text}
-      </motion.p>
-      <div className="pointer-events-none absolute inset-x-0 top-1/2 mx-auto h-px w-24 -translate-y-1/2 bg-gradient-to-r from-transparent via-ember/70 to-transparent sm:w-32" />
-    </div>
+        <Image
+          src={image}
+          alt={imageAlt}
+          fill
+          sizes="100vw"
+          className={cn(
+            "object-cover",
+            tone === "dark" && "grayscale-[0.35] contrast-[1.05]"
+          )}
+        />
+      </motion.div>
+
+      <div
+        className={cn(
+          "absolute inset-0",
+          tone === "dark"
+            ? "bg-gradient-to-r from-charcoal-deep/92 via-charcoal-deep/78 to-wine/55"
+            : "bg-gradient-to-r from-charcoal/80 via-ember/45 to-charcoal-deep/70"
+        )}
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"
+        aria-hidden
+      />
+
+      <motion.div
+        className="relative z-10 mx-auto flex h-full min-h-[28vh] max-w-6xl flex-col items-start justify-center px-5 py-10 sm:min-h-[30vh] sm:px-8 sm:py-12"
+        style={reduce ? undefined : { y: contentY }}
+      >
+        <motion.p
+          className="text-[10px] font-medium uppercase tracking-[0.36em] text-ember sm:text-[11px]"
+          initial={reduce ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.55, ease: MOTION_EASE }}
+        >
+          Jo De Bruges
+        </motion.p>
+        <motion.h2
+          className="mt-3 max-w-xl font-display text-3xl font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.45)] sm:text-4xl md:text-5xl"
+          initial={reduce ? false : { opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.6, delay: 0.06, ease: MOTION_EASE }}
+        >
+          {title}
+        </motion.h2>
+        <motion.div
+          className="mt-4 h-[2px] w-16 bg-gradient-to-r from-ember via-gold to-transparent"
+          initial={reduce ? false : { scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.55, delay: 0.12, ease: MOTION_EASE }}
+          style={{ transformOrigin: "left" }}
+        />
+        <motion.p
+          className="mt-4 max-w-md text-[15px] leading-relaxed text-champagne/90 sm:text-base"
+          initial={reduce ? false : { opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.55, delay: 0.14, ease: MOTION_EASE }}
+        >
+          {line}
+        </motion.p>
+      </motion.div>
+    </section>
   );
 }

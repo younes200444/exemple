@@ -15,7 +15,7 @@ export function Stats() {
 
           return (
             <ScrollReveal key={stat.id} delay={i * 0.08} className="text-center">
-              <p className="font-display text-4xl text-gold md:text-5xl">
+              <p className="font-display text-4xl text-gradient-gold md:text-5xl">
                 {isNumeric ? (
                   <AnimatedCounter value={numeric} suffix={stat.suffix ?? ""} />
                 ) : (

@@ -19,9 +19,9 @@ export function Menu() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="mb-14 border border-gold/35 bg-bg-soft px-5 py-8 sm:mb-16 sm:px-8 md:px-12 md:py-12">
+        <div className="glow-gold mb-14 border border-gold/40 bg-gradient-to-br from-cream via-bg-soft to-beige/40 px-5 py-8 sm:mb-16 sm:px-8 md:px-12 md:py-12">
           <div className="ornament mb-8">
-            <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-gold sm:text-[11px]">
+            <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-wine sm:text-[11px]">
               Suggestions du chef
             </p>
           </div>
@@ -31,7 +31,7 @@ export function Menu() {
                 key={item.id}
                 className={cn(
                   "py-5 first:pt-0 last:pb-0",
-                  i < chefPicks.length - 1 && "border-b border-border/70"
+                  i < chefPicks.length - 1 && "border-b border-gold/25"
                 )}
               >
                 <div className="flex items-baseline gap-2">
@@ -40,7 +40,7 @@ export function Menu() {
                       <h3 className="font-display text-xl text-fg sm:text-2xl">
                         {item.name}
                       </h3>
-                      <span className="border border-gold/40 px-2 py-0.5 text-[9px] uppercase tracking-[0.18em] text-gold">
+                      <span className="bg-wine px-2 py-0.5 text-[9px] uppercase tracking-[0.18em] text-cream">
                         Chef
                       </span>
                     </div>

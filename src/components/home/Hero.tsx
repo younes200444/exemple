@@ -68,7 +68,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35, ease }}
         >
-          <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-gold sm:text-[11px]">
+          <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-gold-bright sm:text-[11px]">
             Brasserie · Rodez
           </span>
         </motion.div>
@@ -81,7 +81,7 @@ export function Hero() {
         >
           Brasserie
           <br />
-          <span className="italic text-champagne">Jo De Bruges</span>
+          <span className="text-gradient-gold italic">Jo De Bruges</span>
         </motion.h1>
 
         <motion.p

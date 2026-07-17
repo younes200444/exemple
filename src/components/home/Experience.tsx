@@ -19,8 +19,8 @@ export function Experience() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-4 left-4 right-4 border border-gold/40 bg-charcoal px-5 py-4 text-white sm:-bottom-5 sm:left-auto sm:right-[-0.75rem] sm:max-w-[13rem] md:right-[-1.25rem]">
-              <p className="font-display text-xl text-gold sm:text-2xl">À Rodez</p>
+            <div className="absolute -bottom-4 left-4 right-4 border border-gold/50 bg-gradient-to-br from-charcoal to-[#2a1514] px-5 py-4 text-white shadow-[var(--shadow-wine)] sm:-bottom-5 sm:left-auto sm:right-[-0.75rem] sm:max-w-[13rem] md:right-[-1.25rem]">
+              <p className="font-display text-xl text-gold-bright sm:text-2xl">À Rodez</p>
               <p className="mt-1 text-xs leading-relaxed text-white/70">
                 Un moment de brasserie française, généreux et authentique
               </p>

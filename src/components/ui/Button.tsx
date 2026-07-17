@@ -2,7 +2,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "ghost" | "outline" | "outlineLight";
+type Variant = "primary" | "secondary" | "ghost" | "outline" | "outlineLight" | "wine";
 type Size = "sm" | "md" | "lg";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,15 +14,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<Variant, string> = {
-  primary:
-    "bg-gold text-charcoal hover:bg-gold-hover shadow-[var(--shadow-gold)] hover:-translate-y-0.5",
+  primary: "btn-gold hover:-translate-y-0.5",
   secondary:
-    "bg-charcoal text-white hover:bg-charcoal-deep hover:-translate-y-0.5",
-  ghost: "bg-transparent text-fg hover:bg-gold-soft",
+    "bg-charcoal text-champagne hover:bg-charcoal-deep hover:-translate-y-0.5",
+  wine:
+    "bg-wine text-cream shadow-[var(--shadow-wine)] hover:bg-[#8f3436] hover:-translate-y-0.5",
+  ghost: "bg-transparent text-fg hover:bg-gold-soft hover:text-gold",
   outline:
-    "border border-border bg-transparent text-fg hover:border-gold hover:text-gold hover:-translate-y-0.5",
+    "border border-gold/40 bg-transparent text-fg hover:border-gold hover:bg-gold-soft hover:text-gold hover:-translate-y-0.5",
   outlineLight:
-    "border border-white/50 bg-transparent text-white hover:border-gold hover:text-gold hover:bg-white/5 hover:-translate-y-0.5",
+    "border border-champagne/60 bg-transparent text-white hover:border-gold-bright hover:text-champagne hover:bg-white/5 hover:-translate-y-0.5",
 };
 
 const sizes: Record<Size, string> = {

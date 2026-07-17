@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/constants";
 
 const inputClass =
-  "w-full border border-border bg-white px-4 py-3.5 text-sm text-fg placeholder:text-fg-subtle transition-colors focus:border-gold";
+  "w-full border border-gold/20 bg-white px-4 py-3.5 text-sm text-fg placeholder:text-fg-subtle transition-colors focus:border-gold focus:bg-cream/40";
 
 const trusts = [
   { icon: Clock3, label: "Réponse rapide" },
@@ -60,7 +60,7 @@ export function Reservation() {
         </div>
 
         <ScrollReveal delay={0.1} className="lg:col-span-7">
-          <div className="border border-border bg-white p-5 shadow-[var(--shadow-lift)] sm:p-6 md:p-10">
+          <div className="glow-gold border border-gold/30 bg-cream p-5 shadow-[var(--shadow-lift)] sm:p-6 md:p-10">
             {status === "success" ? (
               <div className="py-10 text-center" role="status">
                 <CheckCircle2 className="mx-auto text-gold" size={40} />

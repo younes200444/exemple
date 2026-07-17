@@ -1,5 +1,8 @@
 import { Hero } from "@/components/home/Hero";
-import { About } from "@/components/home/About";
+import { Experience } from "@/components/home/Experience";
+import { Philosophy } from "@/components/home/Philosophy";
+import { Signature } from "@/components/home/Signature";
+import { Stats } from "@/components/home/Stats";
 import { Menu } from "@/components/home/Menu";
 import { Gallery } from "@/components/home/Gallery";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
@@ -11,7 +14,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <About />
+      <Experience />
+      <Philosophy />
+      <Signature />
+      <Stats />
       <Menu />
       <Gallery />
       <WhyChooseUs />

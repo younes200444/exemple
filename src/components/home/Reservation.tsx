@@ -1,12 +1,20 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { CheckCircle2, ShieldCheck, Clock3, Sparkles } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
+import { SITE } from "@/lib/constants";
 
 const inputClass =
-  "w-full border border-border bg-white px-4 py-3 text-sm text-fg placeholder:text-fg-subtle transition-colors focus:border-gold";
+  "w-full border border-border bg-white px-4 py-3.5 text-sm text-fg placeholder:text-fg-subtle transition-colors focus:border-gold";
+
+const trusts = [
+  { icon: Clock3, label: "Réponse rapide" },
+  { icon: ShieldCheck, label: "Table garantie" },
+  { icon: Sparkles, label: "Expérience authentique" },
+];
 
 export function Reservation() {
   const [status, setStatus] = useState<"idle" | "success">("idle");
@@ -19,107 +27,128 @@ export function Reservation() {
 
   return (
     <Section id="reservation" soft>
-      <div className="mx-auto max-w-2xl">
-        <ScrollReveal>
-          <SectionHeading
-            eyebrow="Réservation"
-            title="Réservez votre table"
-            description="Quelques clics suffisent — nous vous reconfirmons rapidement par téléphone."
-          />
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          {status === "success" ? (
-            <div
-              className="border border-gold/30 bg-gold-soft p-8 text-center"
-              role="status"
-            >
-              <p className="font-display text-2xl text-fg">Demande envoyée</p>
-              <p className="mt-2 text-sm text-fg-muted">
-                Merci ! Nous vous contactons sous peu pour confirmer votre
-                réservation.
-              </p>
-              <Button
-                className="mt-6"
-                variant="outline"
-                onClick={() => setStatus("idle")}
+      <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-5">
+          <ScrollReveal>
+            <SectionHeading
+              align="left"
+              eyebrow="Réservation"
+              title="Réservez votre table"
+              description="Quelques clics suffisent — nous vous reconfirmons rapidement par téléphone."
+              className="mb-8"
+            />
+            <ul className="space-y-4">
+              {trusts.map((t) => (
+                <li key={t.label} className="flex items-center gap-3 text-sm text-fg-muted">
+                  <span className="inline-flex h-10 w-10 items-center justify-center bg-gold-soft text-gold">
+                    <t.icon size={18} aria-hidden />
+                  </span>
+                  {t.label}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 text-sm text-fg-muted">
+              Ou appelez-nous directement :{" "}
+              <a
+                href={`tel:${SITE.phoneHref}`}
+                className="font-medium text-fg transition-colors hover:text-gold"
               >
-                Nouvelle demande
-              </Button>
-            </div>
-          ) : (
-            <form
-              onSubmit={onSubmit}
-              className="space-y-5 border border-border bg-white p-6 md:p-8"
-              noValidate
-            >
-              <div className="grid gap-5 sm:grid-cols-2">
-                <Field id="name" label="Nom" required>
-                  <input
-                    id="name"
-                    name="name"
-                    required
-                    autoComplete="name"
-                    className={inputClass}
-                    placeholder="Votre nom"
-                  />
-                </Field>
-                <Field id="phone" label="Téléphone" required>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    required
-                    autoComplete="tel"
-                    className={inputClass}
-                    placeholder="06 XX XX XX XX"
-                  />
-                </Field>
+                {SITE.phone}
+              </a>
+            </p>
+          </ScrollReveal>
+        </div>
+
+        <ScrollReveal delay={0.1} className="lg:col-span-7">
+          <div className="border border-border bg-white p-6 shadow-[0_28px_60px_-40px_rgba(23,23,23,0.4)] md:p-10">
+            {status === "success" ? (
+              <div className="py-10 text-center" role="status">
+                <CheckCircle2 className="mx-auto text-gold" size={40} />
+                <p className="mt-4 font-display text-3xl text-fg">
+                  Demande envoyée
+                </p>
+                <p className="mt-3 text-sm text-fg-muted">
+                  Merci ! Nous vous contactons sous peu pour confirmer votre
+                  réservation.
+                </p>
+                <Button
+                  className="mt-8"
+                  variant="outline"
+                  onClick={() => setStatus("idle")}
+                >
+                  Nouvelle demande
+                </Button>
               </div>
+            ) : (
+              <form onSubmit={onSubmit} className="space-y-5" noValidate>
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Field id="name" label="Nom" required>
+                    <input
+                      id="name"
+                      name="name"
+                      required
+                      autoComplete="name"
+                      className={inputClass}
+                      placeholder="Votre nom"
+                    />
+                  </Field>
+                  <Field id="phone" label="Téléphone" required>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      required
+                      autoComplete="tel"
+                      className={inputClass}
+                      placeholder="06 XX XX XX XX"
+                    />
+                  </Field>
+                </div>
 
-              <div className="grid gap-5 sm:grid-cols-2">
-                <Field id="date" label="Date" required>
-                  <input
-                    id="date"
-                    name="date"
-                    type="date"
-                    required
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Field id="date" label="Date" required>
+                    <input
+                      id="date"
+                      name="date"
+                      type="date"
+                      required
+                      className={inputClass}
+                    />
+                  </Field>
+                  <Field id="guests" label="Nombre de personnes" required>
+                    <select
+                      id="guests"
+                      name="guests"
+                      required
+                      className={inputClass}
+                      defaultValue="2"
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                        <option key={n} value={n}>
+                          {n} {n === 1 ? "personne" : "personnes"}
+                        </option>
+                      ))}
+                      <option value="9+">9 personnes ou plus</option>
+                    </select>
+                  </Field>
+                </div>
+
+                <Field id="message" label="Message">
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
                     className={inputClass}
+                    placeholder="Allergies, horaire souhaité, occasion spéciale…"
                   />
                 </Field>
-                <Field id="guests" label="Nombre de personnes" required>
-                  <select
-                    id="guests"
-                    name="guests"
-                    required
-                    className={inputClass}
-                    defaultValue="2"
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                      <option key={n} value={n}>
-                        {n} {n === 1 ? "personne" : "personnes"}
-                      </option>
-                    ))}
-                    <option value="9+">9 personnes ou plus</option>
-                  </select>
-                </Field>
-              </div>
 
-              <Field id="message" label="Message">
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  className={inputClass}
-                  placeholder="Allergies, horaire souhaité, occasion spéciale…"
-                />
-              </Field>
-
-              <Button type="submit" size="lg" className="w-full sm:w-auto">
-                Envoyer ma demande
-              </Button>
-            </form>
-          )}
+                <Button type="submit" size="lg" className="w-full">
+                  Envoyer ma demande
+                </Button>
+              </form>
+            )}
+          </div>
         </ScrollReveal>
       </div>
     </Section>

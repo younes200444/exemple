@@ -1,25 +1,34 @@
-import type { GalleryImage, MenuItem, Testimonial } from "@/types";
+import type {
+  GalleryImage,
+  MenuItem,
+  StatItem,
+  Testimonial,
+} from "@/types";
 
 export const menuItems: MenuItem[] = [
   {
     id: "foie-gras",
     name: "Foie gras maison",
-    description: "Foie gras de canard mi-cuit, chutney de figues et pain brioché toasté.",
+    description:
+      "Foie gras de canard mi-cuit, chutney de figues et pain brioché toasté.",
     price: 16.5,
     category: "entrees",
     signature: true,
+    chefPick: true,
   },
   {
     id: "salade",
     name: "Salade fraîcheur",
-    description: "Mesclun, tomates confites, noix croquantes et vinaigrette maison.",
+    description:
+      "Mesclun, tomates confites, noix croquantes et vinaigrette maison.",
     price: 11.0,
     category: "entrees",
   },
   {
     id: "charcuterie",
     name: "Assiette de charcuterie",
-    description: "Sélection de charcuteries artisanales d'Aveyron, cornichons et pain de campagne.",
+    description:
+      "Sélection de charcuteries artisanales d'Aveyron, cornichons et pain de campagne.",
     price: 14.0,
     category: "entrees",
   },
@@ -31,35 +40,43 @@ export const menuItems: MenuItem[] = [
     price: 18.5,
     category: "plats",
     signature: true,
-    image: "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=900&q=80",
+    chefPick: true,
+    image:
+      "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=1200&q=80",
   },
   {
     id: "entrecote",
     name: "Entrecôte grillée",
-    description: "Entrecôte française, beurre maître d'hôtel, frites et salade verte.",
+    description:
+      "Entrecôte française, beurre maître d'hôtel, frites et salade verte.",
     price: 24.0,
     category: "plats",
+    chefPick: true,
   },
   {
     id: "poisson",
     name: "Poisson du marché",
-    description: "Selon arrivage — cuit à la plancha, légumes de saison et beurre citronné.",
+    description:
+      "Selon arrivage — cuit à la plancha, légumes de saison et beurre citronné.",
     price: 22.0,
     category: "plats",
   },
   {
     id: "creme-brulee",
     name: "Crème brûlée",
-    description: "Crème vanille de Madagascar, caramel croustillant à la cassonade.",
+    description:
+      "Crème vanille de Madagascar, caramel croustillant à la cassonade.",
     price: 8.5,
     category: "desserts",
   },
   {
     id: "cafe-gourmand",
     name: "Café gourmand",
-    description: "Café ou thé accompagné d'une sélection de mignardises maison.",
+    description:
+      "Café ou thé accompagné d'une sélection de mignardises maison.",
     price: 9.5,
     category: "desserts",
+    chefPick: true,
   },
   {
     id: "dessert-maison",
@@ -108,6 +125,31 @@ export const whyUs = [
   },
 ];
 
+export const stats: StatItem[] = [
+  { id: "1", value: "20", suffix: "+", label: "Ans de savoir-faire" },
+  { id: "2", value: "100", suffix: "%", label: "Produits frais" },
+  { id: "3", value: "5", suffix: "★", label: "Avis clients" },
+  { id: "4", value: "1", suffix: "", label: "Spécialité signature" },
+];
+
+export const philosophy = [
+  {
+    id: "1",
+    title: "Recettes traditionnelles",
+    text: "Des plats de brasserie transmis et peaufinés — respect du geste, générosité de l'assiette.",
+  },
+  {
+    id: "2",
+    title: "Produits de saison",
+    text: "Nous privilégions les arrivages du jour et les circuits courts pour une cuisine franche et vivante.",
+  },
+  {
+    id: "3",
+    title: "Héritage français",
+    text: "L'esprit des grandes brasseries : authenticité, convivialité et le plaisir de bien manger.",
+  },
+];
+
 export const testimonials: Testimonial[] = [
   {
     id: "1",
@@ -116,6 +158,8 @@ export const testimonials: Testimonial[] = [
     quote:
       "Une excellente adresse à Rodez. Les moules frites sont généreuses et savoureuses, le service est souriant. On y revient régulièrement en famille.",
     rating: 5,
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
   },
   {
     id: "2",
@@ -124,6 +168,8 @@ export const testimonials: Testimonial[] = [
     quote:
       "Brasserie authentique, sans chichi. L'entrecôte est parfaitement grillée, les frites croustillantes. Une vraie table de quartier où l'on se sent bien.",
     rating: 5,
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
   },
   {
     id: "3",
@@ -132,6 +178,18 @@ export const testimonials: Testimonial[] = [
     quote:
       "Ambiance chaleureuse et cuisine généreuse. Le foie gras maison est un régal. Idéal pour un déjeuner d'affaires ou un dîner détendu.",
     rating: 5,
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80",
+  },
+  {
+    id: "4",
+    name: "Jean-Pierre D.",
+    role: "Aveyronnais",
+    quote:
+      "Enfin une brasserie digne de ce nom à Rodez. Accueil impeccable, assiettes soignées. Les moules sont un vrai régal — je recommande vivement.",
+    rating: 5,
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
   },
 ];
 
@@ -170,6 +228,18 @@ export const galleryImages: GalleryImage[] = [
     id: "6",
     src: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1000&q=80",
     alt: "Dessert crème brûlée",
+    span: "normal",
+  },
+  {
+    id: "7",
+    src: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=1000&q=80",
+    alt: "Salle de restaurant élégante",
+    span: "wide",
+  },
+  {
+    id: "8",
+    src: "https://images.unsplash.com/photo-1544025162-d76694265947?w=1000&q=80",
+    alt: "Plat de viande grillée",
     span: "normal",
   },
 ];

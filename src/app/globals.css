@@ -11,30 +11,34 @@
   --color-gold-hover: var(--gold-hover);
   --color-gold-soft: var(--gold-soft);
   --color-charcoal: var(--charcoal);
+  --color-charcoal-deep: var(--charcoal-deep);
   --color-beige: var(--beige);
+  --color-champagne: var(--champagne);
   --color-border: var(--border);
   --font-display: var(--font-display);
   --font-sans: var(--font-body);
 }
 
 :root {
-  --bg: #ffffff;
-  --bg-soft: #f7f4ef;
-  --bg-muted: #efe9e0;
-  --fg: #1a1a1a;
-  --fg-muted: #5a554c;
-  --fg-subtle: #8a847a;
-  --gold: #b08d3a;
-  --gold-hover: #96762e;
-  --gold-soft: rgba(176, 141, 58, 0.12);
-  --charcoal: #1a1a1a;
-  --beige: #d9d0c1;
-  --border: rgba(26, 26, 26, 0.1);
+  --bg: #faf8f5;
+  --bg-soft: #f3efe8;
+  --bg-muted: #ebe4d8;
+  --fg: #171717;
+  --fg-muted: #5c564c;
+  --fg-subtle: #8a8378;
+  --gold: #c4a35a;
+  --gold-hover: #a8863f;
+  --gold-soft: rgba(196, 163, 90, 0.14);
+  --charcoal: #171717;
+  --charcoal-deep: #0e0e0e;
+  --beige: #e8dfd0;
+  --champagne: #d4c4a0;
+  --border: rgba(23, 23, 23, 0.1);
   --hero-overlay: linear-gradient(
-    105deg,
-    rgba(18, 18, 18, 0.82) 0%,
-    rgba(18, 18, 18, 0.55) 45%,
-    rgba(18, 18, 18, 0.35) 100%
+    120deg,
+    rgba(14, 14, 14, 0.88) 0%,
+    rgba(14, 14, 14, 0.58) 48%,
+    rgba(14, 14, 14, 0.4) 100%
   );
 }
 
@@ -51,7 +55,7 @@ body {
 
 ::selection {
   background: var(--gold);
-  color: #fff;
+  color: #171717;
 }
 
 :focus-visible {
@@ -61,6 +65,7 @@ body {
 
 .font-display {
   font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 .gold-rule {
@@ -71,9 +76,28 @@ body {
 
 .gold-rule-center {
   height: 1px;
-  width: 3.5rem;
+  width: 4rem;
   margin-inline: auto;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.ornament::before,
+.ornament::after {
+  content: "";
+  height: 1px;
+  width: 2.5rem;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.ornament::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
 }
 
 @keyframes shimmer {
@@ -89,11 +113,11 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(176, 141, 58, 0.45),
+    rgba(196, 163, 90, 0.5),
     transparent
   );
   background-size: 200% 100%;
-  animation: shimmer 1.4s ease-in-out infinite;
+  animation: shimmer 1.5s ease-in-out infinite;
 }
 
 .masonry {
@@ -110,10 +134,26 @@ body {
 @media (min-width: 1024px) {
   .masonry {
     columns: 3;
+    column-gap: 1.25rem;
   }
 }
 
 .masonry-item {
   break-inside: avoid;
   margin-bottom: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .masonry-item {
+    margin-bottom: 1.25rem;
+  }
+}
+
+.texture-paper {
+  background-color: var(--bg-soft);
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    rgba(196, 163, 90, 0.08),
+    transparent
+  );
 }

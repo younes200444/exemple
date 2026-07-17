@@ -8,6 +8,7 @@ export interface MenuItem {
   category: MenuCategory;
   image?: string;
   signature?: boolean;
+  chefPick?: boolean;
 }
 
 export interface Testimonial {
@@ -16,6 +17,7 @@ export interface Testimonial {
   role: string;
   quote: string;
   rating: number;
+  avatar: string;
 }
 
 export interface GalleryImage {
@@ -28,4 +30,11 @@ export interface GalleryImage {
 export interface NavLink {
   href: string;
   label: string;
+}
+
+export interface StatItem {
+  id: string;
+  value: string;
+  label: string;
+  suffix?: string;
 }

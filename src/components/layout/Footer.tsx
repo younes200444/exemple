@@ -3,11 +3,11 @@ import { SITE } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal text-white">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-3">
+    <footer className="bg-charcoal-deep text-white">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-3 md:py-20">
         <div>
-          <p className="font-display text-2xl">{SITE.name}</p>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/65">
+          <p className="font-display text-2xl md:text-3xl">{SITE.name}</p>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
             Brasserie française à Rodez — moules frites, cuisine traditionnelle
             et ambiance conviviale.
           </p>
@@ -16,17 +16,17 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
-            className="mt-6 inline-flex h-10 w-10 items-center justify-center border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
+            className="mt-6 inline-flex h-10 w-10 items-center justify-center border border-white/15 text-white/65 transition-colors hover:border-gold hover:text-gold"
           >
             <FacebookIcon size={18} />
           </a>
         </div>
 
         <div>
-          <h3 className="text-[11px] font-medium uppercase tracking-[0.24em] text-gold">
+          <h3 className="text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
             Horaires
           </h3>
-          <ul className="mt-4 space-y-2 text-sm text-white/70">
+          <ul className="mt-5 space-y-2.5 text-sm text-white/65">
             {SITE.hours.map((h) => (
               <li key={h.day} className="flex justify-between gap-4">
                 <span>{h.day}</span>
@@ -37,10 +37,10 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="text-[11px] font-medium uppercase tracking-[0.24em] text-gold">
+          <h3 className="text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
             Contact
           </h3>
-          <address className="mt-4 space-y-2 text-sm not-italic text-white/70">
+          <address className="mt-5 space-y-2 text-sm not-italic text-white/65">
             <p>{SITE.address.street}</p>
             <p>
               {SITE.address.postal} {SITE.address.city}
@@ -58,7 +58,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-white/45 sm:flex-row sm:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-white/40 sm:flex-row sm:px-8">
           <p>
             © {new Date().getFullYear()} {SITE.name}. Tous droits réservés.
           </p>

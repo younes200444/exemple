@@ -4,14 +4,16 @@ export function JsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
+    "@id": `${SITE.url}/#restaurant`,
     name: SITE.name,
+    alternateName: SITE.shortName,
     description: SITE.description,
     url: SITE.url,
     telephone: SITE.phoneHref,
-    servesCuisine: ["French", "Brasserie", "Moules Frites"],
+    email: SITE.email,
+    servesCuisine: ["French", "Brasserie", "Moules Frites", "Seafood"],
     priceRange: "€€",
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
+    image: [SITE.ogImage],
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.address.street,
@@ -24,6 +26,8 @@ export function JsonLd() {
       latitude: 44.3494,
       longitude: 2.5756,
     },
+    hasMenu: `${SITE.url}/#menu`,
+    acceptsReservations: true,
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -56,6 +60,12 @@ export function JsonLd() {
         closes: "14:30",
       },
     ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "120",
+      bestRating: "5",
+    },
     sameAs: [SITE.social.facebook],
   };
 

@@ -32,6 +32,8 @@ export const metadata: Metadata = {
     "restaurant Avenue de la Gineste",
     "cuisine française Rodez",
     "brasserie Aveyron",
+    "restaurant Rodez",
+    "réserver table Rodez",
   ],
   authors: [{ name: SITE.name }],
   openGraph: {
@@ -43,10 +45,10 @@ export const metadata: Metadata = {
     description: SITE.tagline,
     images: [
       {
-        url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
+        url: SITE.ogImage,
         width: 1200,
         height: 630,
-        alt: SITE.name,
+        alt: `${SITE.name} — ambiance brasserie à Rodez`,
       },
     ],
   },
@@ -54,9 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE.name} — Brasserie à Rodez`,
     description: SITE.tagline,
-    images: [
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
-    ],
+    images: [SITE.ogImage],
   },
   robots: {
     index: true,
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1a1a1a",
+  themeColor: "#171717",
   width: "device-width",
   initialScale: 1,
 };
@@ -86,7 +86,7 @@ export default function RootLayout({
       <body className={`${display.variable} ${body.variable} antialiased`}>
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[110] focus:bg-gold focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[110] focus:bg-gold focus:px-4 focus:py-2 focus:text-charcoal"
         >
           Aller au contenu
         </a>

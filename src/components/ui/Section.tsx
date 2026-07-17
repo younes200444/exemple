@@ -7,16 +7,25 @@ interface SectionProps {
   id?: string;
   soft?: boolean;
   muted?: boolean;
+  dark?: boolean;
 }
 
-export function Section({ children, className, id, soft, muted }: SectionProps) {
+export function Section({
+  children,
+  className,
+  id,
+  soft,
+  muted,
+  dark,
+}: SectionProps) {
   return (
     <section
       id={id}
       className={cn(
-        "relative scroll-mt-24 py-20 md:py-28",
-        soft && "bg-bg-soft",
+        "relative scroll-mt-24 py-24 md:py-32",
+        soft && "texture-paper",
         muted && "bg-bg-muted",
+        dark && "bg-charcoal text-white",
         className
       )}
     >
@@ -45,7 +54,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "mb-12 md:mb-16 max-w-2xl",
+        "mb-14 md:mb-20 max-w-2xl",
         align === "center" && "mx-auto text-center",
         className
       )}
@@ -53,8 +62,8 @@ export function SectionHeading({
       {eyebrow && (
         <p
           className={cn(
-            "mb-3 text-[11px] font-medium uppercase tracking-[0.28em]",
-            light ? "text-gold" : "text-gold"
+            "mb-4 text-[11px] font-medium uppercase tracking-[0.32em]",
+            "text-gold"
           )}
         >
           {eyebrow}
@@ -62,7 +71,7 @@ export function SectionHeading({
       )}
       <h2
         className={cn(
-          "font-display text-3xl leading-[1.15] md:text-5xl",
+          "font-display text-3xl font-medium leading-[1.12] md:text-5xl lg:text-[3.25rem]",
           light ? "text-white" : "text-fg"
         )}
       >
@@ -70,15 +79,15 @@ export function SectionHeading({
       </h2>
       <div
         className={cn(
-          "mt-5",
+          "mt-6",
           align === "center" ? "gold-rule-center" : "gold-rule"
         )}
       />
       {description && (
         <p
           className={cn(
-            "mt-5 text-base leading-relaxed md:text-lg",
-            light ? "text-white/75" : "text-fg-muted"
+            "mt-6 text-base leading-relaxed md:text-lg",
+            light ? "text-white/70" : "text-fg-muted"
           )}
         >
           {description}

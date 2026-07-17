@@ -8,7 +8,7 @@ export function PageLoader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(false), 1300);
+    const t = setTimeout(() => setVisible(false), 1500);
     return () => clearTimeout(t);
   }, []);
 
@@ -16,15 +16,20 @@ export function PageLoader() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-charcoal"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-charcoal-deep"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.55, ease: "easeInOut" }}
         >
-          <p className="font-display text-2xl text-white sm:text-3xl">
+          <motion.p
+            className="font-display text-2xl text-white sm:text-3xl"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             {SITE.shortName}
-          </p>
-          <div className="mt-5 h-[1px] w-20 overflow-hidden bg-white/15">
+          </motion.p>
+          <div className="mt-6 h-[1px] w-24 overflow-hidden bg-white/10">
             <div className="loader-shimmer h-full w-full" />
           </div>
         </motion.div>

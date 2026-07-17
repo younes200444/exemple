@@ -15,18 +15,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-gold text-white hover:bg-gold-hover shadow-[0_10px_28px_-12px_rgba(176,141,58,0.55)]",
-  secondary: "bg-charcoal text-white hover:bg-charcoal/90",
+    "bg-gold text-charcoal hover:bg-gold-hover shadow-[0_12px_32px_-12px_rgba(196,163,90,0.55)]",
+  secondary: "bg-charcoal text-white hover:bg-charcoal-deep",
   ghost: "bg-transparent text-fg hover:bg-gold-soft",
-  outline: "border border-border bg-transparent text-fg hover:border-gold hover:text-gold",
+  outline:
+    "border border-border bg-transparent text-fg hover:border-gold hover:text-gold",
   outlineLight:
-    "border border-white/40 bg-transparent text-white hover:border-gold hover:text-gold",
+    "border border-white/45 bg-transparent text-white hover:border-gold hover:text-gold",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3 text-sm tracking-wide",
-  lg: "px-8 py-4 text-base tracking-wide",
+  sm: "px-5 py-2.5 text-sm",
+  md: "px-7 py-3.5 text-sm tracking-[0.04em]",
+  lg: "px-9 py-4 text-base tracking-[0.04em]",
 };
 
 export function Button({
@@ -38,7 +39,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-none font-medium transition-all duration-300 focus-visible:outline-none disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 rounded-none font-medium uppercase transition-all duration-300 focus-visible:outline-none disabled:opacity-50",
     variants[variant],
     sizes[size],
     className

@@ -1,73 +1,112 @@
 "use client";
 
 import Image from "next/image";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
+const specs = [
+  { label: "Origine", value: "Moules de bouchot" },
+  { label: "Préparation", value: "15–20 min" },
+  { label: "Accompagnement", value: "Frites maison" },
+  { label: "Prix", value: "18,50 €" },
+];
+
 export function Signature() {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.18, 1.05, 1.12]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+
   return (
     <section
       id="signature"
-      className="texture-wine relative scroll-mt-24 overflow-hidden py-20 sm:py-24 md:py-32"
+      ref={ref}
+      className="relative scroll-mt-24 min-h-[92svh] overflow-hidden bg-charcoal-deep"
     >
-      <div className="absolute inset-0 opacity-[0.18]">
+      <motion.div
+        className="absolute inset-0 will-change-transform"
+        style={reduce ? undefined : { scale: imageScale, y: imageY }}
+      >
         <Image
-          src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=1600&q=80"
-          alt=""
+          src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=1800&q=80"
+          alt="Moules frites traditionnelles — spécialité Jo De Bruges"
           fill
           sizes="100vw"
-          className="object-cover"
-          aria-hidden
+          className="object-cover object-center"
+          priority
         />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal-deep/80 via-transparent to-charcoal-deep/90 lg:bg-gradient-to-r lg:from-charcoal-deep/90 lg:via-charcoal/70 lg:to-transparent" />
+      </motion.div>
 
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
-        <ScrollReveal>
-          <p className="text-[10px] font-medium uppercase tracking-[0.34em] text-gold-bright sm:text-[11px]">
-            Notre spécialité
-          </p>
-          <h2 className="mt-3 font-display text-[2.35rem] font-medium leading-[1.08] text-white sm:mt-4 sm:text-5xl lg:text-6xl">
-            Moules Frites
-            <br />
-            <span className="text-gradient-gold italic">Traditionnelles</span>
-          </h2>
-          <div className="gold-rule mt-5 sm:mt-6" />
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/75 sm:mt-6 sm:text-base md:text-lg">
-            Le plat qui fait la réputation de Jo De Bruges à Rodez. Moules de
-            bouchot soigneusement préparées — marinière ou crème — accompagnées
-            de frites maison croustillantes. Un classique généreux, servi avec
-            passion.
-          </p>
-          <div className="mt-8 flex flex-col gap-4 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
-            <p className="font-display text-3xl text-gold-bright sm:text-4xl">18,50 €</p>
-            <Button href="#reservation" size="lg" className="w-full sm:w-auto">
-              Réserver pour y goûter
-              <ArrowRight size={17} />
-            </Button>
-          </div>
-        </ScrollReveal>
+      <div className="absolute inset-0 bg-gradient-to-r from-charcoal-deep via-charcoal-deep/85 to-charcoal-deep/35" />
+      <div className="absolute inset-0 bg-gradient-to-t from-charcoal-deep via-transparent to-charcoal-deep/50" />
 
-        <ScrollReveal delay={0.12}>
-          <div className="frame-gold img-zoom glow-gold relative mx-auto aspect-[4/5] max-w-sm overflow-hidden border border-gold/30 sm:max-w-md lg:max-w-none">
-            <Image
-              src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=1100&q=80"
-              alt="Moules frites traditionnelles — spécialité Jo De Bruges"
-              fill
-              sizes="(max-width: 1024px) 90vw, 45vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal-deep via-charcoal-deep/80 to-transparent p-5 sm:p-6">
-              <p className="text-[10px] uppercase tracking-[0.24em] text-gold-bright">
-                Coup de cœur
-              </p>
-              <p className="mt-1 font-display text-lg text-white sm:text-xl">
-                La signature de la maison
-              </p>
+      <p
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-display text-[22vw] font-medium leading-none text-white/[0.035]"
+      >
+        SIGNATURE
+      </p>
+
+      <div className="relative z-10 mx-auto flex min-h-[92svh] max-w-6xl flex-col justify-end px-5 py-16 sm:px-8 sm:py-20 md:py-28 lg:justify-center">
+        <div className="max-w-xl">
+          <ScrollReveal direction="blur">
+            <p className="text-[10px] font-medium uppercase tracking-[0.36em] text-gold-bright sm:text-[11px]">
+              Notre spécialité
+            </p>
+            <h2 className="mt-4 font-display text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.02em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              Moules Frites
+              <br />
+              <span className="text-gradient-gold italic">Traditionnelles</span>
+            </h2>
+            <div className="gold-rule mt-6" />
+            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/75 sm:text-base md:text-lg">
+              Le plat qui fait la réputation de Jo De Bruges à Rodez. Moules de
+              bouchot — marinière ou crème — et frites maison croustillantes.
+              Un classique généreux, servi avec passion.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.12} className="mt-10">
+            <ul className="grid grid-cols-2 gap-4 border border-white/10 bg-charcoal-deep/45 p-5 backdrop-blur-md sm:gap-6 sm:p-6 md:max-w-lg">
+              {specs.map((s) => (
+                <li key={s.label}>
+                  <p className="text-[9px] uppercase tracking-[0.22em] text-gold-bright/80">
+                    {s.label}
+                  </p>
+                  <p className="mt-1 font-display text-lg text-white sm:text-xl">
+                    {s.value}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2} className="mt-8">
+            <div className="cta-glow inline-flex w-full sm:w-auto">
+              <Button
+                href="#reservation"
+                size="lg"
+                className="w-full sm:w-auto"
+                data-cursor="Réserver"
+              >
+                Réserver pour y goûter
+                <ArrowRight size={17} />
+              </Button>
             </div>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );

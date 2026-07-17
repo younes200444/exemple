@@ -9,17 +9,21 @@ import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { Reviews } from "@/components/home/Reviews";
 import { Location } from "@/components/home/Location";
 import { Reservation } from "@/components/home/Reservation";
+import { EditorialBreak } from "@/components/ui/EditorialBreak";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
       <Experience />
+      <EditorialBreak text="L'ART DU GOÛT" />
       <Philosophy />
       <Signature />
       <Stats />
+      <EditorialBreak text="LA CARTE" className="bg-bg" />
       <Menu />
       <Gallery />
+      <EditorialBreak text="CONVICTIONS" />
       <WhyChooseUs />
       <Reviews />
       <Location />

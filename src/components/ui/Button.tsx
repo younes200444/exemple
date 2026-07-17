@@ -2,7 +2,13 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "ghost" | "outline" | "outlineLight" | "wine";
+type Variant =
+  | "primary"
+  | "secondary"
+  | "ghost"
+  | "outline"
+  | "outlineLight"
+  | "wine";
 type Size = "sm" | "md" | "lg";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -11,6 +17,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
   children: ReactNode;
   className?: string;
+  "data-cursor"?: string;
 }
 
 const variants: Record<Variant, string> = {
@@ -47,9 +54,11 @@ export function Button({
     className
   );
 
+  const cursor = props["data-cursor"];
+
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} data-cursor={cursor}>
         {children}
       </Link>
     );

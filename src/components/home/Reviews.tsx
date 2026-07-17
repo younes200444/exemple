@@ -2,27 +2,31 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { testimonials } from "@/data/content";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { cn } from "@/lib/utils";
 
 export function Reviews() {
   const [index, setIndex] = useState(0);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     const t = setInterval(() => {
       setIndex((i) => (i + 1) % testimonials.length);
-    }, 6000);
+    }, 6500);
     return () => clearInterval(t);
   }, []);
 
-  const current = testimonials[index];
+  const prev = () =>
+    setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+  const next = () => setIndex((i) => (i + 1) % testimonials.length);
 
   return (
-    <Section id="reviews" muted divider>
-      <ScrollReveal>
+    <Section id="reviews" muted divider className="bg-shift-cream overflow-hidden">
+      <ScrollReveal direction="blur">
         <SectionHeading
           eyebrow="Avis clients"
           title="Ils en parlent mieux que nous"
@@ -30,69 +34,70 @@ export function Reviews() {
         />
       </ScrollReveal>
 
-      <ScrollReveal>
-        <div className="relative mx-auto max-w-3xl">
-          <div className="overflow-hidden border border-gold/25 bg-cream px-5 py-10 shadow-[var(--shadow-lift)] sm:px-8 sm:py-12 md:px-14 md:py-16">
+      <ScrollReveal delay={0.08}>
+        <div className="relative mx-auto max-w-5xl">
+          {/* Depth stack — desktop */}
+          <div className="relative hidden h-[420px] items-center justify-center md:flex">
+            {testimonials.map((t, i) => {
+              const offset =
+                (i - index + testimonials.length) % testimonials.length;
+              const normalized =
+                offset > testimonials.length / 2
+                  ? offset - testimonials.length
+                  : offset;
+              const isActive = normalized === 0;
+              const abs = Math.abs(normalized);
+
+              if (abs > 1) return null;
+
+              return (
+                <motion.article
+                  key={t.id}
+                  className={cn(
+                    "absolute w-[min(100%,520px)] border border-gold/25 bg-cream p-10 shadow-[var(--shadow-lift)]",
+                    isActive ? "z-20" : "z-10"
+                  )}
+                  animate={{
+                    x: normalized * 210,
+                    scale: isActive ? 1 : 0.86,
+                    opacity: isActive ? 1 : 0.45,
+                    filter: reduce
+                      ? undefined
+                      : isActive
+                        ? "blur(0px)"
+                        : "blur(2.5px)",
+                  }}
+                  transition={{ type: "spring", stiffness: 220, damping: 26 }}
+                >
+                  <ReviewCard t={t} />
+                </motion.article>
+              );
+            })}
+          </div>
+
+          {/* Mobile — single card */}
+          <div className="md:hidden">
             <AnimatePresence mode="wait">
-              <motion.blockquote
-                key={current.id}
-                initial={{ opacity: 0, y: 16 }}
+              <motion.article
+                key={testimonials[index].id}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.4 }}
-                className="text-center"
+                transition={{ duration: 0.35 }}
+                className="border border-gold/25 bg-cream p-6 shadow-[var(--shadow-lift)] sm:p-8"
               >
-                <div
-                  className="mb-6 flex justify-center gap-1 text-gold"
-                  aria-label={`${current.rating} sur 5 étoiles`}
-                >
-                  {Array.from({ length: current.rating }).map((_, idx) => (
-                    <motion.span
-                      key={idx}
-                      initial={{ opacity: 0, scale: 0.6 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: idx * 0.06 }}
-                    >
-                      <Star size={16} fill="currentColor" />
-                    </motion.span>
-                  ))}
-                </div>
-
-                <p className="font-display text-xl leading-relaxed text-fg md:text-2xl md:leading-relaxed">
-                  &ldquo;{current.quote}&rdquo;
-                </p>
-
-                <footer className="mt-8 flex flex-col items-center gap-3">
-                  <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-gold/40">
-                    <Image
-                      src={current.avatar}
-                      alt=""
-                      fill
-                      sizes="56px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <cite className="not-italic font-medium text-fg">
-                      {current.name}
-                    </cite>
-                    <p className="mt-0.5 text-xs uppercase tracking-[0.16em] text-fg-subtle">
-                      {current.role}
-                    </p>
-                  </div>
-                </footer>
-              </motion.blockquote>
+                <ReviewCard t={testimonials[index]} />
+              </motion.article>
             </AnimatePresence>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-4">
+          <div className="mt-10 flex items-center justify-center gap-4">
             <button
               type="button"
-              onClick={() =>
-                setIndex((i) => (i - 1 + testimonials.length) % testimonials.length)
-              }
+              onClick={prev}
               className="inline-flex h-11 w-11 items-center justify-center border border-border text-fg transition-colors hover:border-gold hover:text-gold"
               aria-label="Avis précédent"
+              data-cursor="←"
             >
               <ChevronLeft size={20} />
             </button>
@@ -105,8 +110,8 @@ export function Reviews() {
                   role="tab"
                   aria-selected={i === index}
                   onClick={() => setIndex(i)}
-                  className={`h-2 w-2 rounded-full transition-colors ${
-                    i === index ? "bg-gold" : "bg-border hover:bg-gold/50"
+                  className={`h-2 rounded-full transition-all ${
+                    i === index ? "w-6 bg-gold" : "w-2 bg-border hover:bg-gold/50"
                   }`}
                   aria-label={`Avis ${i + 1}`}
                 />
@@ -115,9 +120,10 @@ export function Reviews() {
 
             <button
               type="button"
-              onClick={() => setIndex((i) => (i + 1) % testimonials.length)}
+              onClick={next}
               className="inline-flex h-11 w-11 items-center justify-center border border-border text-fg transition-colors hover:border-gold hover:text-gold"
               aria-label="Avis suivant"
+              data-cursor="→"
             >
               <ChevronRight size={20} />
             </button>
@@ -125,5 +131,38 @@ export function Reviews() {
         </div>
       </ScrollReveal>
     </Section>
+  );
+}
+
+function ReviewCard({
+  t,
+}: {
+  t: (typeof testimonials)[number];
+}) {
+  return (
+    <blockquote className="text-center">
+      <div
+        className="mb-5 flex justify-center gap-1 text-gold"
+        aria-label={`${t.rating} sur 5 étoiles`}
+      >
+        {Array.from({ length: t.rating }).map((_, idx) => (
+          <Star key={idx} size={15} fill="currentColor" />
+        ))}
+      </div>
+      <p className="font-display text-xl leading-relaxed text-fg md:text-2xl">
+        &ldquo;{t.quote}&rdquo;
+      </p>
+      <footer className="mt-8 flex flex-col items-center gap-3">
+        <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-gold/40">
+          <Image src={t.avatar} alt="" fill sizes="56px" className="object-cover" />
+        </div>
+        <div>
+          <cite className="not-italic font-medium text-fg">{t.name}</cite>
+          <p className="mt-0.5 text-xs uppercase tracking-[0.16em] text-fg-subtle">
+            {t.role}
+          </p>
+        </div>
+      </footer>
+    </blockquote>
   );
 }

@@ -6,21 +6,26 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function Experience() {
   return (
-    <Section id="experience" soft divider>
-      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
-        <ScrollReveal direction="left">
-          <div className="relative mx-auto max-w-md lg:max-w-none">
-            <div className="img-zoom relative aspect-[4/5] overflow-hidden">
+    <Section id="experience" soft divider className="bg-shift-warm overflow-x-clip">
+      <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+        <ScrollReveal direction="clip" className="relative lg:col-span-6 lg:col-start-1">
+          <div className="relative mx-auto max-w-lg lg:mx-0 lg:max-w-none">
+            <div
+              className="img-zoom relative aspect-[4/5] overflow-hidden lg:-ml-6 lg:w-[108%]"
+              data-cursor="Voir"
+            >
               <Image
                 src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1100&q=80"
                 alt="Table dressée à la Brasserie Jo De Bruges"
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-4 left-4 right-4 border border-gold/50 bg-gradient-to-br from-charcoal to-[#2a1514] px-5 py-4 text-white shadow-[var(--shadow-wine)] sm:-bottom-5 sm:left-auto sm:right-[-0.75rem] sm:max-w-[13rem] md:right-[-1.25rem]">
-              <p className="font-display text-xl text-gold-bright sm:text-2xl">À Rodez</p>
+            <div className="absolute -bottom-4 left-4 right-4 z-10 border border-gold/50 bg-gradient-to-br from-charcoal to-[#2a1514] px-5 py-4 text-white shadow-[var(--shadow-wine)] sm:-bottom-6 sm:left-auto sm:right-0 sm:max-w-[14rem] lg:-right-8">
+              <p className="font-display text-xl text-gold-bright sm:text-2xl">
+                À Rodez
+              </p>
               <p className="mt-1 text-xs leading-relaxed text-white/70">
                 Un moment de brasserie française, généreux et authentique
               </p>
@@ -28,7 +33,11 @@ export function Experience() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.12} direction="right" className="pt-6 sm:pt-8 lg:pt-0">
+        <ScrollReveal
+          delay={0.12}
+          direction="right"
+          className="pt-8 lg:col-span-5 lg:col-start-8 lg:pt-0"
+        >
           <SectionHeading
             align="left"
             eyebrow="L'expérience"

@@ -63,13 +63,13 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.34em] text-gold sm:mb-4 sm:text-[11px]">
+        <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.34em] text-gold sm:text-[11px]">
           {eyebrow}
         </p>
       )}
       <h2
         className={cn(
-          "font-display text-[1.85rem] font-medium leading-[1.12] sm:text-4xl md:text-5xl lg:text-[3.35rem]",
+          "font-display text-[1.85rem] font-semibold leading-[1.12] sm:text-4xl md:text-5xl lg:text-[3.4rem]",
           light ? "text-white" : "text-fg"
         )}
       >

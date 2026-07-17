@@ -7,11 +7,13 @@ import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { PageLoader } from "@/components/layout/PageLoader";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { FloatingReserve } from "@/components/layout/FloatingReserve";
+import { CustomCursor } from "@/components/layout/CustomCursor";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <>
       <PageLoader />
+      <CustomCursor />
       <ScrollProgress />
       <Navbar />
       <main id="main-content">{children}</main>

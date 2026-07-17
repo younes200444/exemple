@@ -4,13 +4,17 @@ import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
+type RevealVariant = "up" | "left" | "right" | "clip" | "scale" | "blur";
+
 interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
   once?: boolean;
-  direction?: "up" | "left" | "right";
+  direction?: RevealVariant;
 }
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function ScrollReveal({
   children,
@@ -25,20 +29,62 @@ export function ScrollReveal({
     return <div className={className}>{children}</div>;
   }
 
+  if (direction === "clip") {
+    return (
+      <motion.div
+        className={cn("will-change-transform", className)}
+        initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0.4 }}
+        whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
+        viewport={{ once, margin: "-10%" }}
+        transition={{ duration: 1.05, delay, ease }}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
+  if (direction === "scale") {
+    return (
+      <motion.div
+        className={cn("will-change-transform", className)}
+        initial={{ opacity: 0, scale: 1.08, filter: "blur(6px)" }}
+        whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+        viewport={{ once, margin: "-10%" }}
+        transition={{ duration: 0.95, delay, ease }}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
+  if (direction === "blur") {
+    return (
+      <motion.div
+        className={cn("will-change-transform", className)}
+        initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once, margin: "-10%" }}
+        transition={{ duration: 0.9, delay, ease }}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
   const offset =
     direction === "left"
-      ? { x: -40, y: 0 }
+      ? { x: -56, y: 0 }
       : direction === "right"
-        ? { x: 40, y: 0 }
-        : { x: 0, y: 40 };
+        ? { x: 56, y: 0 }
+        : { x: 0, y: 48 };
 
   return (
     <motion.div
-      className={cn(className)}
+      className={cn("will-change-transform", className)}
       initial={{ opacity: 0, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, margin: "-80px" }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once, margin: "-12%" }}
+      transition={{ duration: 0.9, delay, ease }}
     >
       {children}
     </motion.div>

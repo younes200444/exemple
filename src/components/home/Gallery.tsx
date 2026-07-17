@@ -64,6 +64,7 @@ export function Gallery() {
                 img.span === "normal" && "min-h-[240px] sm:min-h-[310px]"
               )}
               aria-label={`Agrandir : ${img.alt}`}
+              data-cursor="Voir"
             >
               <Image
                 src={img.src}

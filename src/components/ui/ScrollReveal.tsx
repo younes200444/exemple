@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type RevealVariant = "up" | "left" | "right" | "clip" | "scale" | "blur";
+type RevealVariant = "up" | "left" | "right" | "clip" | "scale" | "fade";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -47,23 +47,9 @@ export function ScrollReveal({
     return (
       <motion.div
         className={cn("will-change-transform", className)}
-        initial={{ opacity: 0, scale: 1.08, filter: "blur(6px)" }}
-        whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-        viewport={{ once, margin: "-10%" }}
-        transition={{ duration: 0.95, delay, ease }}
-      >
-        {children}
-      </motion.div>
-    );
-  }
-
-  if (direction === "blur") {
-    return (
-      <motion.div
-        className={cn("will-change-transform", className)}
-        initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once, margin: "-10%" }}
+        initial={{ opacity: 0, scale: 0.92 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once, margin: "-80px" }}
         transition={{ duration: 0.9, delay, ease }}
       >
         {children}
@@ -76,14 +62,16 @@ export function ScrollReveal({
       ? { x: -56, y: 0 }
       : direction === "right"
         ? { x: 56, y: 0 }
-        : { x: 0, y: 48 };
+        : direction === "fade"
+          ? { x: 0, y: 0 }
+          : { x: 0, y: 48 };
 
   return (
     <motion.div
       className={cn("will-change-transform", className)}
       initial={{ opacity: 0, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, margin: "-12%" }}
+      viewport={{ once, margin: "-80px" }}
       transition={{ duration: 0.9, delay, ease }}
     >
       {children}

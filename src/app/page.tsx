@@ -15,15 +15,15 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Experience />
       <EditorialBreak text="L'ART DU GOÛT" />
+      <Experience />
       <Philosophy />
+      <EditorialBreak text="SIGNATURE" className="bg-bg-soft/50" />
       <Signature />
       <Stats />
-      <EditorialBreak text="LA CARTE" className="bg-bg" />
+      <EditorialBreak text="LA CARTE" />
       <Menu />
       <Gallery />
-      <EditorialBreak text="CONVICTIONS" />
       <WhyChooseUs />
       <Reviews />
       <Location />

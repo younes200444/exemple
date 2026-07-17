@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ReactNode,
+} from "react";
 
 type Variant =
   | "primary"
@@ -11,21 +15,21 @@ type Variant =
   | "wine";
 type Size = "sm" | "md" | "lg";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonProps = {
   variant?: Variant;
   size?: Size;
   href?: string;
   children: ReactNode;
   className?: string;
   "data-cursor"?: string;
-}
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "children" | "href">;
 
 const variants: Record<Variant, string> = {
-  primary: "btn-gold hover:-translate-y-0.5",
+  primary: "btn-gold cta-glow hover:-translate-y-0.5",
   secondary:
     "bg-charcoal text-champagne hover:bg-charcoal-deep hover:-translate-y-0.5",
-  wine:
-    "bg-wine text-cream shadow-[var(--shadow-wine)] hover:bg-[#8f3436] hover:-translate-y-0.5",
+  wine: "bg-wine text-cream shadow-[var(--shadow-wine)] hover:bg-[#8f3436] hover:-translate-y-0.5",
   ghost: "bg-transparent text-fg hover:bg-gold-soft hover:text-gold",
   outline:
     "border border-gold/40 bg-transparent text-fg hover:border-gold hover:bg-gold-soft hover:text-gold hover:-translate-y-0.5",
@@ -54,11 +58,9 @@ export function Button({
     className
   );
 
-  const cursor = props["data-cursor"];
-
   if (href) {
     return (
-      <Link href={href} className={classes} data-cursor={cursor}>
+      <Link href={href} className={classes} {...props}>
         {children}
       </Link>
     );

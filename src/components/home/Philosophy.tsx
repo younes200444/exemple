@@ -36,7 +36,13 @@ export function Philosophy() {
           </div>
         </div>
 
-        <ScrollReveal delay={0.15} className="lg:col-span-7">
+        <ScrollReveal delay={0.15} direction="clip" className="relative lg:col-span-7">
+          <p
+            className="pointer-events-none absolute -right-2 -top-8 z-10 hidden select-none font-display text-[5.5rem] leading-none text-gold/[0.12] lg:block"
+            aria-hidden
+          >
+            02
+          </p>
           <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
             <div className="img-zoom relative aspect-[3/4] overflow-hidden">
               <Image

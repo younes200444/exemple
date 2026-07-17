@@ -15,6 +15,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <PageLoader />
       <CustomCursor />
       <ScrollProgress />
+      <div className="signature-rail hidden md:block" aria-hidden />
       <Navbar />
       <main id="main-content">{children}</main>
       <Footer />

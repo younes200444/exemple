@@ -1,24 +1,30 @@
 "use client";
 
+import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function CustomCursor() {
+  const reduce = useReducedMotion();
   const [enabled, setEnabled] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [label, setLabel] = useState("");
+
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
-  const springX = useSpring(x, { stiffness: 420, damping: 32, mass: 0.4 });
-  const springY = useSpring(y, { stiffness: 420, damping: 32, mass: 0.4 });
+  const springX = useSpring(x, { stiffness: 400, damping: 32, mass: 0.4 });
+  const springY = useSpring(y, { stiffness: 400, damping: 32, mass: 0.4 });
 
   useEffect(() => {
-    const fine = window.matchMedia("(pointer: fine)").matches;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!fine || reduce) return;
+    if (reduce) return;
+    const mq = window.matchMedia("(pointer: fine)");
+    const update = () => setEnabled(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, [reduce]);
 
-    setEnabled(true);
-    document.documentElement.classList.add("cursor-agency");
+  useEffect(() => {
+    if (!enabled) return;
 
     const onMove = (e: MouseEvent) => {
       x.set(e.clientX);
@@ -31,7 +37,7 @@ export function CustomCursor() {
       ) as HTMLElement | null;
       if (target) {
         setHovering(true);
-        setLabel(target.dataset.cursor || "");
+        setLabel(target.dataset.cursor ?? "");
       } else {
         setHovering(false);
         setLabel("");
@@ -39,33 +45,34 @@ export function CustomCursor() {
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
-    window.addEventListener("mouseover", onOver, { passive: true });
+    window.addEventListener("mouseover", onOver);
+    document.documentElement.classList.add("has-custom-cursor");
 
     return () => {
-      document.documentElement.classList.remove("cursor-agency");
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
+      document.documentElement.classList.remove("has-custom-cursor");
     };
-  }, [x, y]);
+  }, [enabled, x, y]);
 
   if (!enabled) return null;
 
   return (
     <motion.div
+      className="pointer-events-none fixed left-0 top-0 z-[200] mix-blend-difference"
+      style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-[120] mix-blend-difference"
-      style={{ x: springX, y: springY }}
     >
       <motion.div
-        className="flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-white/10 backdrop-blur-[2px]"
+        className="flex items-center justify-center rounded-full border border-white/80 bg-white/10 backdrop-blur-[2px]"
         animate={{
-          width: hovering ? (label ? 88 : 56) : 14,
-          height: hovering ? (label ? 88 : 56) : 14,
+          width: hovering ? (label ? 72 : 48) : 14,
+          height: hovering ? (label ? 72 : 48) : 14,
         }}
-        transition={{ type: "spring", stiffness: 320, damping: 24 }}
+        transition={{ type: "spring", stiffness: 300, damping: 24 }}
       >
         {label && (
-          <span className="text-[9px] font-medium uppercase tracking-[0.18em] text-white">
+          <span className="text-[9px] font-medium uppercase tracking-[0.16em] text-white">
             {label}
           </span>
         )}

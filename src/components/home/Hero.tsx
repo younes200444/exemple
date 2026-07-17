@@ -10,6 +10,9 @@ import {
 import { useRef } from "react";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { Magnetic } from "@/components/ui/Magnetic";
+import { SplitTitle } from "@/components/ui/SplitTitle";
+import { Aurora } from "@/components/ui/Aurora";
 import { SITE } from "@/lib/constants";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -22,27 +25,26 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.2]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "32%"]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.25]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 160]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const mistY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const mistY = useTransform(scrollYProgress, [0, 1], ["0%", "45%"]);
 
   return (
     <section
       ref={ref}
       className="relative flex min-h-[100svh] items-end overflow-hidden"
     >
-      {/* Layer 1 — background (slowest) */}
       <motion.div
-        className="absolute inset-[-8%] will-change-transform"
+        className="absolute inset-[-10%] will-change-transform"
         style={reduce ? undefined : { y: bgY, scale: bgScale }}
       >
         <motion.div
           className="absolute inset-0"
-          initial={reduce ? false : { scale: 1.14 }}
+          initial={reduce ? false : { scale: 1.18 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 2.8, ease }}
+          transition={{ duration: 2.6, ease }}
         >
           <Image
             src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80"
@@ -55,26 +57,27 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Layer 2 — warm mist */}
       <motion.div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-wine/25 via-transparent to-gold/10 mix-blend-soft-light will-change-transform"
+        className="pointer-events-none absolute inset-0 mix-blend-soft-light will-change-transform"
         style={reduce ? undefined : { y: mistY }}
         aria-hidden
-      />
+      >
+        <div className="absolute inset-0 bg-gradient-to-tr from-wine/40 via-transparent to-ember/30" />
+      </motion.div>
 
       <div
         className="absolute inset-0"
         style={{ background: "var(--hero-overlay)" }}
         aria-hidden
       />
+      <Aurora variant="warm" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-charcoal-deep to-transparent" />
 
-      {/* Giant watermark */}
       <motion.p
-        className="pointer-events-none absolute right-[-4%] top-[18%] hidden select-none font-display text-[18vw] font-medium leading-none text-white/[0.04] lg:block"
-        initial={reduce ? false : { opacity: 0, x: 40 }}
+        className="pointer-events-none absolute right-[-4%] top-[14%] hidden select-none font-display text-[20vw] font-bold leading-none text-ember/10 lg:block"
+        initial={reduce ? false : { opacity: 0, x: 60 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.4, delay: 0.6, ease }}
+        transition={{ duration: 1.3, delay: 0.5, ease }}
         aria-hidden
       >
         JO
@@ -86,77 +89,81 @@ export function Hero() {
       >
         <motion.div
           className="ornament mb-6 justify-start sm:mb-8"
-          initial={reduce ? false : { opacity: 0, y: 16 }}
+          initial={reduce ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease }}
+          transition={{ duration: 0.7, delay: 0.35, ease }}
         >
           <span className="text-[10px] font-medium uppercase tracking-[0.42em] text-gold-bright sm:text-[11px]">
             Brasserie · Rodez
           </span>
         </motion.div>
 
-        <motion.h1
-          className="font-display text-[3.1rem] font-bold leading-[0.92] tracking-[-0.03em] text-white sm:text-7xl md:text-8xl lg:text-[7.5rem]"
-          initial={reduce ? false : { opacity: 0, y: 56 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.15, delay: 0.5, ease }}
-        >
-          Brasserie
+        <h1 className="font-display text-[3.1rem] font-bold leading-[0.92] tracking-[-0.03em] text-white sm:text-7xl md:text-8xl lg:text-[7.5rem]">
+          <SplitTitle text="Brasserie" delay={0.4} />
           <br />
-          <span className="text-gradient-gold italic">Jo De Bruges</span>
-        </motion.h1>
+          <SplitTitle
+            text="Jo De Bruges"
+            delay={0.55}
+            gradientClassName="text-gradient-gold"
+            className="italic"
+          />
+        </h1>
 
         <motion.div
-          className="mt-6 h-px w-0 bg-gradient-to-r from-gold via-champagne to-transparent sm:mt-8"
+          className="mt-6 h-[2px] bg-gradient-to-r from-ember via-gold to-transparent sm:mt-8"
           initial={reduce ? false : { width: 0 }}
-          animate={{ width: "min(12rem, 40%)" }}
-          transition={{ duration: 1.1, delay: 0.95, ease }}
+          animate={{ width: "min(14rem, 45%)" }}
+          transition={{ duration: 1, delay: 1.1, ease }}
         />
 
         <motion.p
-          className="mt-5 max-w-md text-[15px] font-light leading-relaxed text-white/80 sm:mt-7 sm:max-w-xl sm:text-lg md:text-xl"
-          initial={reduce ? false : { opacity: 0, y: 28 }}
+          className="mt-5 max-w-md text-[15px] font-light text-champagne/90 sm:mt-7 sm:text-lg md:text-xl"
+          initial={reduce ? false : { opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.95, delay: 0.85, ease }}
+          transition={{ duration: 0.85, delay: 1.05, ease }}
         >
           {SITE.tagline}
         </motion.p>
 
         <motion.div
-          className="mt-9 flex flex-col gap-3 sm:mt-11 sm:flex-row sm:flex-wrap sm:gap-4"
-          initial={reduce ? false : { opacity: 0, y: 24 }}
+          className="mt-9 flex flex-col gap-4 sm:mt-11 sm:flex-row sm:flex-wrap"
+          initial={reduce ? false : { opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.05, ease }}
+          transition={{ duration: 0.8, delay: 1.2, ease }}
         >
-          <Button
-            href="#reservation"
-            size="lg"
-            className="cta-glow w-full sm:w-auto"
-            data-cursor="Réserver"
-          >
-            Réserver une table
-            <ArrowRight size={17} />
-          </Button>
-          <Button
-            href="#menu"
-            variant="outlineLight"
-            size="lg"
-            className="w-full sm:w-auto"
-            data-cursor="Menu"
-          >
-            Découvrir notre menu
-          </Button>
+          <Magnetic>
+            <Button
+              href="#reservation"
+              size="lg"
+              className="cta-glow w-full sm:w-auto"
+              data-cursor="Réserver"
+            >
+              Réserver une table
+              <ArrowRight size={18} />
+            </Button>
+          </Magnetic>
+          <Magnetic strength={18}>
+            <Button
+              href="#menu"
+              variant="outlineLight"
+              size="lg"
+              className="w-full border-2 border-champagne/70 sm:w-auto"
+              data-cursor="Menu"
+            >
+              Découvrir notre menu
+            </Button>
+          </Magnetic>
         </motion.div>
       </motion.div>
 
       <motion.a
         href="#experience"
-        className="absolute bottom-7 left-1/2 z-10 hidden -translate-x-1/2 text-white/45 transition-colors hover:text-gold sm:block"
-        aria-label="Découvrir l'expérience"
-        animate={reduce ? undefined : { y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 2.6, ease: "easeInOut" }}
+        className="absolute bottom-7 left-1/2 z-10 hidden -translate-x-1/2 text-gold-bright/70 transition-colors hover:text-ember sm:block"
+        aria-label="Découvrir"
+        animate={reduce ? undefined : { y: [0, 12, 0] }}
+        transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
       >
-        <ArrowDown size={20} />
+        <ArrowDown size={22} />
       </motion.a>
     </section>
   );

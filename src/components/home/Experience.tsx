@@ -7,7 +7,13 @@ import { ScrambleText } from "@/components/ui/ScrambleText";
 
 export function Experience() {
   return (
-    <Section id="experience" soft divider className="overflow-x-clip !py-16 sm:!py-20 md:!py-28">
+    <Section
+      id="experience"
+      soft
+      divider
+      aurora="soft"
+      className="!py-16 sm:!py-20 md:!py-28 texture-ember"
+    >
       <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-6">
         <ScrollReveal direction="clip" className="relative lg:col-span-7">
           <div className="relative mx-auto max-w-lg lg:mx-0 lg:max-w-none">
@@ -23,7 +29,7 @@ export function Experience() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-4 left-4 border border-gold/50 bg-charcoal px-5 py-3 text-gold-bright shadow-[var(--shadow-wine)] sm:-bottom-5 sm:left-auto sm:right-6 lg:right-4">
+            <div className="absolute -bottom-4 left-4 border border-ember/60 bg-charcoal px-5 py-3 text-gold-bright shadow-[var(--shadow-ember)] sm:-bottom-5 sm:left-auto sm:right-6 lg:right-4">
               <p className="font-display text-xl sm:text-2xl">Rodez</p>
             </div>
           </div>
@@ -34,7 +40,7 @@ export function Experience() {
           direction="right"
           className="flex flex-col justify-center lg:col-span-5 lg:pl-6"
         >
-          <p className="text-[10px] uppercase tracking-[0.34em] text-gold">
+          <p className="text-[10px] uppercase tracking-[0.34em] text-ember">
             L&apos;expérience
           </p>
           <h2 className="mt-4 font-display text-4xl font-bold leading-[1.02] tracking-[-0.02em] text-fg sm:text-5xl md:text-6xl">

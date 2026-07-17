@@ -4,7 +4,14 @@ import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type RevealVariant = "up" | "left" | "right" | "clip" | "scale" | "fade" | "punchy";
+type RevealVariant =
+  | "up"
+  | "left"
+  | "right"
+  | "clip"
+  | "scale"
+  | "fade"
+  | "punchy";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -33,10 +40,10 @@ export function ScrollReveal({
     return (
       <motion.div
         className={cn("will-change-transform", className)}
-        initial={{ opacity: 0, y: 24, scale: 0.98 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once, margin: "-60px" }}
-        transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, y: 48, scale: 0.88, rotate: -2 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+        viewport={{ once, margin: "-40px" }}
+        transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
       >
         {children}
       </motion.div>
@@ -47,10 +54,10 @@ export function ScrollReveal({
     return (
       <motion.div
         className={cn("will-change-transform", className)}
-        initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0.4 }}
-        whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
-        viewport={{ once, margin: "-10%" }}
-        transition={{ duration: 1.05, delay, ease }}
+        initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0.35, y: 30 }}
+        whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1, y: 0 }}
+        viewport={{ once, margin: "-8%" }}
+        transition={{ duration: 1.1, delay, ease }}
       >
         {children}
       </motion.div>
@@ -61,10 +68,10 @@ export function ScrollReveal({
     return (
       <motion.div
         className={cn("will-change-transform", className)}
-        initial={{ opacity: 0, scale: 0.92 }}
+        initial={{ opacity: 0, scale: 0.82 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once, margin: "-80px" }}
-        transition={{ duration: 0.9, delay, ease }}
+        viewport={{ once, margin: "-60px" }}
+        transition={{ duration: 0.85, delay, ease }}
       >
         {children}
       </motion.div>
@@ -73,20 +80,20 @@ export function ScrollReveal({
 
   const offset =
     direction === "left"
-      ? { x: -56, y: 0 }
+      ? { x: -72, y: 0 }
       : direction === "right"
-        ? { x: 56, y: 0 }
+        ? { x: 72, y: 0 }
         : direction === "fade"
           ? { x: 0, y: 0 }
-          : { x: 0, y: 48 };
+          : { x: 0, y: 64 };
 
   return (
     <motion.div
       className={cn("will-change-transform", className)}
       initial={{ opacity: 0, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, margin: "-80px" }}
-      transition={{ duration: 0.9, delay, ease }}
+      viewport={{ once, margin: "-60px" }}
+      transition={{ duration: 0.85, delay, ease }}
     >
       {children}
     </motion.div>

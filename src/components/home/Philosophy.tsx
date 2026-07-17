@@ -8,11 +8,15 @@ import { ScrambleText } from "@/components/ui/ScrambleText";
 
 export function Philosophy() {
   return (
-    <Section id="savoir-faire" divider className="!py-16 sm:!py-20 md:!py-28">
+    <Section
+      id="savoir-faire"
+      divider
+      className="!py-16 sm:!py-20 md:!py-28 texture-wine-light"
+    >
       <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5">
           <ScrollReveal direction="up">
-            <p className="text-[10px] uppercase tracking-[0.34em] text-gold">
+            <p className="text-[10px] uppercase tracking-[0.34em] text-wine">
               Savoir-faire
             </p>
             <h2 className="mt-4 font-display text-4xl font-bold leading-[1.02] text-fg sm:text-5xl md:text-6xl">
@@ -27,7 +31,7 @@ export function Philosophy() {
           <div className="mt-10 flex flex-wrap gap-3">
             {philosophy.map((item, i) => (
               <ScrollReveal key={item.id} delay={i * 0.06}>
-                <span className="border border-gold/35 bg-cream px-4 py-2 font-display text-lg text-fg transition-colors hover:border-gold hover:bg-gold-soft">
+                <span className="border border-wine/30 bg-cream px-4 py-2 font-display text-lg text-fg transition-all duration-300 hover:scale-105 hover:border-ember hover:bg-wine-soft hover:text-wine hover:shadow-[var(--shadow-wine)]">
                   {item.title}
                 </span>
               </ScrollReveal>

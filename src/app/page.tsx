@@ -16,20 +16,28 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <EditorialBreak text="L'ART DU GOÛT" />
+      <EditorialBreak text="L'ART DU GOÛT" className="texture-ember" />
       <Experience />
-      <EditorialBreak text="AUTHENTIQUE" speed="punchy" className="bg-bg-soft/40" />
+      <EditorialBreak
+        text="AUTHENTIQUE"
+        speed="punchy"
+        className="section-dark"
+      />
       <Philosophy />
-      <EditorialBreak text="SIGNATURE" className="bg-bg-soft/50" />
+      <EditorialBreak text="SIGNATURE" className="texture-wine-light" />
       <Signature />
       <Stats />
-      <EditorialBreak text="LA CARTE" speed="punchy" />
+      <EditorialBreak text="LA CARTE" speed="punchy" className="texture-ember" />
       <Menu />
-      <EditorialBreak text="INSTANTS" />
+      <EditorialBreak text="INSTANTS" className="bg-bg-muted" />
       <Gallery />
       <BonAppetit />
       <WhyChooseUs />
-      <EditorialBreak text="AVIS" speed="punchy" className="bg-bg-muted/40" />
+      <EditorialBreak
+        text="AVIS"
+        speed="punchy"
+        className="section-dark"
+      />
       <Reviews />
       <Location />
       <Reservation />

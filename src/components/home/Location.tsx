@@ -20,7 +20,7 @@ export function Location() {
           <div className="flex h-full flex-col border border-border bg-bg-soft p-8 md:p-10">
             <ul className="space-y-7">
               <li className="flex gap-4">
-                <MapPin className="mt-0.5 shrink-0 text-gold" size={20} />
+                <MapPin className="mt-0.5 shrink-0 text-ember" size={20} />
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.2em] text-fg-subtle">
                     Adresse

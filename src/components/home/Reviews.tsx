@@ -29,7 +29,7 @@ export function Reviews() {
   };
 
   return (
-    <Section id="reviews" muted divider>
+    <Section id="reviews" muted divider aurora="soft" className="texture-wine-light">
       <ScrollReveal>
         <SectionHeading
           eyebrow="Avis"

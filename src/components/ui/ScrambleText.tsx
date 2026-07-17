@@ -10,9 +10,8 @@ interface ScrambleTextProps {
   as?: "p" | "span" | "h2";
 }
 
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZÀÂÉÈÊÔÙ·—";
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZÀÂÉÈÊÔÙ·—★";
 
-/** Premium playful hover: letters scramble then resolve. */
 export function ScrambleText({
   text,
   className,
@@ -28,10 +27,11 @@ export function ScrambleText({
     if (timer.current) window.clearInterval(timer.current);
     frame.current = 0;
     const length = text.length;
+    const total = 10;
 
     timer.current = window.setInterval(() => {
       frame.current += 1;
-      const progress = frame.current / 14;
+      const progress = frame.current / total;
       setDisplay(
         text
           .split("")
@@ -42,11 +42,11 @@ export function ScrambleText({
           })
           .join("")
       );
-      if (frame.current >= 14) {
+      if (frame.current >= total) {
         if (timer.current) window.clearInterval(timer.current);
         setDisplay(text);
       }
-    }, 28);
+    }, 18);
   }, [reduce, text]);
 
   return (

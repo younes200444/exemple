@@ -5,10 +5,11 @@ import { CheckCircle2 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
+import { Magnetic } from "@/components/ui/Magnetic";
 import { SITE } from "@/lib/constants";
 
 const inputClass =
-  "w-full border border-gold/20 bg-white px-4 py-3.5 text-sm text-fg placeholder:text-fg-subtle transition-colors focus:border-gold focus:bg-cream/40";
+  "w-full border border-gold/25 bg-white px-4 py-3.5 text-sm text-fg placeholder:text-fg-subtle transition-colors focus:border-ember focus:bg-cream/40";
 
 const trusts = [
   { label: "Réponse rapide" },
@@ -26,7 +27,13 @@ export function Reservation() {
   };
 
   return (
-    <Section id="reservation" soft divider>
+    <Section
+      id="reservation"
+      soft
+      divider
+      aurora="warm"
+      className="texture-ember"
+    >
       <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <ScrollReveal>
@@ -40,7 +47,7 @@ export function Reservation() {
               {trusts.map((t) => (
                 <li
                   key={t.label}
-                  className="border border-gold/30 bg-gold-soft px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-fg"
+                  className="border border-ember/35 bg-ember/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-ember"
                 >
                   {t.label}
                 </li>
@@ -49,7 +56,7 @@ export function Reservation() {
             <p className="mt-6">
               <a
                 href={`tel:${SITE.phoneHref}`}
-                className="font-display text-2xl text-gold transition-colors hover:text-gold-hover"
+                className="font-display text-2xl text-gradient-gold transition-opacity hover:opacity-80"
               >
                 {SITE.phone}
               </a>
@@ -58,10 +65,10 @@ export function Reservation() {
         </div>
 
         <ScrollReveal delay={0.1} className="lg:col-span-7">
-          <div className="glow-gold border border-gold/30 bg-cream p-5 shadow-[var(--shadow-lift)] sm:p-6 md:p-10">
+          <div className="glow-gold border border-gold/40 bg-gradient-to-br from-cream to-[#f5e0cc] p-5 shadow-[var(--shadow-ember)] sm:p-6 md:p-10">
             {status === "success" ? (
               <div className="py-10 text-center" role="status">
-                <CheckCircle2 className="mx-auto text-gold" size={40} />
+                <CheckCircle2 className="mx-auto text-ember" size={44} />
                 <p className="mt-4 font-display text-3xl text-fg">
                   Demande envoyée
                 </p>
@@ -141,9 +148,11 @@ export function Reservation() {
                   />
                 </Field>
 
-                <Button type="submit" size="lg" className="w-full">
-                  Envoyer ma demande
-                </Button>
+                <Magnetic strength={22} className="w-full">
+                  <Button type="submit" size="lg" className="cta-glow w-full">
+                    Envoyer ma demande
+                  </Button>
+                </Magnetic>
               </form>
             )}
           </div>

@@ -13,9 +13,9 @@ import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const specs = [
-  { label: "Origine", value: "Moules de bouchot" },
-  { label: "Préparation", value: "Marinière ou crème" },
-  { label: "Accompagnement", value: "Frites maison" },
+  { label: "Origine", value: "Bouchot" },
+  { label: "Sauce", value: "Marinière" },
+  { label: "Side", value: "Frites" },
   { label: "Prix", value: "18,50 €" },
 ];
 
@@ -58,15 +58,11 @@ export function Signature() {
             <p className="text-[10px] font-medium uppercase tracking-[0.36em] text-gold-bright sm:text-[11px]">
               Notre spécialité
             </p>
-            <h2 className="mt-4 max-w-3xl font-display text-[2.6rem] font-bold leading-[0.98] tracking-[-0.02em] text-white sm:text-6xl md:text-7xl lg:text-8xl">
+            <h2 className="mt-4 max-w-3xl font-display text-[2.8rem] font-bold leading-[0.95] tracking-[-0.02em] text-white sm:text-6xl md:text-7xl lg:text-8xl">
               Moules Frites
               <br />
-              <span className="text-gradient-gold italic">Traditionnelles</span>
+              <span className="text-gradient-gold italic">★ Signature</span>
             </h2>
-            <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-white/75 sm:text-base md:text-lg">
-              Le plat qui fait la réputation de Jo De Bruges à Rodez. Un classique
-              généreux, servi avec passion — le moment fort de chaque table.
-            </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.15} className="mt-10">
@@ -94,7 +90,7 @@ export function Signature() {
               className="cta-glow w-full sm:w-auto"
               data-cursor="Réserver"
             >
-              Réserver pour y goûter
+              Réserver
               <ArrowRight size={17} />
             </Button>
           </ScrollReveal>

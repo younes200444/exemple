@@ -40,7 +40,7 @@ const variants: Record<Variant, string> = {
 const sizes: Record<Size, string> = {
   sm: "px-5 py-2.5 text-[11px] tracking-[0.16em]",
   md: "px-7 py-3.5 text-[12px] tracking-[0.16em]",
-  lg: "px-8 py-4 text-[12px] tracking-[0.18em] sm:px-10 sm:text-[13px]",
+  lg: "min-h-[3.25rem] px-10 py-4 text-[13px] tracking-[0.18em] sm:min-h-[3.5rem] sm:px-12 sm:text-sm",
 };
 
 export function Button({

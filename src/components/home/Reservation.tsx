@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { CheckCircle2, ShieldCheck, Clock3, Sparkles } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
@@ -11,9 +11,9 @@ const inputClass =
   "w-full border border-gold/20 bg-white px-4 py-3.5 text-sm text-fg placeholder:text-fg-subtle transition-colors focus:border-gold focus:bg-cream/40";
 
 const trusts = [
-  { icon: Clock3, label: "Réponse rapide" },
-  { icon: ShieldCheck, label: "Table garantie" },
-  { icon: Sparkles, label: "Expérience authentique" },
+  { label: "Réponse rapide" },
+  { label: "Table garantie" },
+  { label: "Authentique" },
 ];
 
 export function Reservation() {
@@ -32,26 +32,24 @@ export function Reservation() {
           <ScrollReveal>
             <SectionHeading
               align="left"
-              eyebrow="Réservation"
-              title="Réservez votre table"
-              description="Quelques clics suffisent — nous vous reconfirmons rapidement par téléphone."
-              className="mb-7 sm:mb-8"
+              eyebrow="Réserver"
+              title="Votre table"
+              className="mb-6"
             />
-            <ul className="space-y-3.5 sm:space-y-4">
+            <ul className="flex flex-wrap gap-2">
               {trusts.map((t) => (
-                <li key={t.label} className="flex items-center gap-3 text-sm text-fg-muted">
-                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-gold-soft text-gold">
-                    <t.icon size={18} aria-hidden />
-                  </span>
+                <li
+                  key={t.label}
+                  className="border border-gold/30 bg-gold-soft px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-fg"
+                >
                   {t.label}
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-sm text-fg-muted">
-              Ou appelez-nous directement :{" "}
+            <p className="mt-6">
               <a
                 href={`tel:${SITE.phoneHref}`}
-                className="font-medium text-fg transition-colors hover:text-gold"
+                className="font-display text-2xl text-gold transition-colors hover:text-gold-hover"
               >
                 {SITE.phone}
               </a>

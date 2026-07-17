@@ -24,7 +24,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "relative scroll-mt-24 py-20 sm:py-24 md:py-32",
+        "relative scroll-mt-24 py-16 sm:py-20 md:py-28",
         soft && "texture-paper",
         muted && "bg-bg-muted",
         dark && "bg-charcoal text-white",

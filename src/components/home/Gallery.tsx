@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { galleryImages } from "@/data/content";
-import { Section, SectionHeading } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { cn } from "@/lib/utils";
 
@@ -40,11 +40,12 @@ export function Gallery() {
   return (
     <Section id="gallery" soft divider>
       <ScrollReveal>
-        <SectionHeading
-          eyebrow="Galerie"
-          title="L'ambiance Jo De Bruges"
-          description="Salle, assiettes et moments partagés — un aperçu de l'esprit de la maison."
-        />
+        <div className="mb-10 text-center md:mb-14">
+          <h2 className="font-display text-4xl font-bold text-fg sm:text-5xl md:text-6xl">
+            Galerie
+          </h2>
+          <div className="gold-rule-center mt-5" />
+        </div>
       </ScrollReveal>
 
       <div className="masonry">

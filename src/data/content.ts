@@ -9,8 +9,7 @@ export const menuItems: MenuItem[] = [
   {
     id: "foie-gras",
     name: "Foie gras maison",
-    description:
-      "Foie gras de canard mi-cuit, chutney de figues et pain brioché toasté.",
+    description: "Figues · brioche",
     price: 16.5,
     category: "entrees",
     signature: true,
@@ -19,24 +18,21 @@ export const menuItems: MenuItem[] = [
   {
     id: "salade",
     name: "Salade fraîcheur",
-    description:
-      "Mesclun, tomates confites, noix croquantes et vinaigrette maison.",
+    description: "Mesclun · noix · vinaigrette",
     price: 11.0,
     category: "entrees",
   },
   {
     id: "charcuterie",
     name: "Assiette de charcuterie",
-    description:
-      "Sélection de charcuteries artisanales d'Aveyron, cornichons et pain de campagne.",
+    description: "Aveyron · cornichons",
     price: 14.0,
     category: "entrees",
   },
   {
     id: "moules",
-    name: "Moules frites traditionnelles",
-    description:
-      "Notre signature — moules de bouchot, sauce marinière ou crème, frites maison croustillantes.",
+    name: "Moules frites",
+    description: "Bouchot · marinière · frites",
     price: 18.5,
     category: "plats",
     signature: true,
@@ -47,8 +43,7 @@ export const menuItems: MenuItem[] = [
   {
     id: "entrecote",
     name: "Entrecôte grillée",
-    description:
-      "Entrecôte française, beurre maître d'hôtel, frites et salade verte.",
+    description: "Beurre · frites · salade",
     price: 24.0,
     category: "plats",
     chefPick: true,
@@ -56,24 +51,21 @@ export const menuItems: MenuItem[] = [
   {
     id: "poisson",
     name: "Poisson du marché",
-    description:
-      "Selon arrivage — cuit à la plancha, légumes de saison et beurre citronné.",
+    description: "Plancha · légumes · citron",
     price: 22.0,
     category: "plats",
   },
   {
     id: "creme-brulee",
     name: "Crème brûlée",
-    description:
-      "Crème vanille de Madagascar, caramel croustillant à la cassonade.",
+    description: "Vanille · cassonade",
     price: 8.5,
     category: "desserts",
   },
   {
     id: "cafe-gourmand",
     name: "Café gourmand",
-    description:
-      "Café ou thé accompagné d'une sélection de mignardises maison.",
+    description: "Mignardises maison",
     price: 9.5,
     category: "desserts",
     chefPick: true,
@@ -81,7 +73,7 @@ export const menuItems: MenuItem[] = [
   {
     id: "dessert-maison",
     name: "Dessert maison",
-    description: "Selon l'inspiration du jour — demandez à votre serveur.",
+    description: "Selon l'inspiration",
     price: 8.0,
     category: "desserts",
     signature: true,
@@ -89,74 +81,57 @@ export const menuItems: MenuItem[] = [
 ];
 
 export const menuSections = [
-  { id: "entrees" as const, label: "Entrées", subtitle: "Pour commencer" },
-  { id: "plats" as const, label: "Plats", subtitle: "Le cœur de la table" },
-  { id: "desserts" as const, label: "Desserts", subtitle: "La touche finale" },
+  { id: "entrees" as const, label: "Entrées", subtitle: "" },
+  { id: "plats" as const, label: "Plats", subtitle: "" },
+  { id: "desserts" as const, label: "Desserts", subtitle: "" },
 ];
 
 export const whyUs = [
   {
     id: "1",
-    title: "Produits frais",
-    description:
-      "Fruits de mer, viandes et légumes sélectionnés auprès de producteurs locaux et de marchés de confiance.",
+    title: "Frais",
+    description: "Du jour",
     icon: "Leaf" as const,
   },
   {
     id: "2",
-    title: "Cuisine traditionnelle",
-    description:
-      "Les classiques de la brasserie française, préparés avec soin — des moules frites à l'entrecôte.",
+    title: "Tradition",
+    description: "Brasserie",
     icon: "UtensilsCrossed" as const,
   },
   {
     id: "3",
-    title: "Service chaleureux",
-    description:
-      "Une équipe accueillante qui connaît ses habitués et veille à ce que chaque repas soit un moment agréable.",
+    title: "Accueil",
+    description: "Chaleureux",
     icon: "HeartHandshake" as const,
   },
   {
     id: "4",
-    title: "Ambiance conviviale",
-    description:
-      "Le cadre idéal pour un déjeuner entre collègues, un dîner en famille ou une soirée entre amis.",
+    title: "Ambiance",
+    description: "Conviviale",
     icon: "Users" as const,
   },
 ];
 
 export const stats: StatItem[] = [
-  { id: "1", value: "20", suffix: "+", label: "Ans de savoir-faire" },
-  { id: "2", value: "100", suffix: "%", label: "Produits frais" },
-  { id: "3", value: "5", suffix: "★", label: "Avis clients" },
-  { id: "4", value: "1", suffix: "", label: "Spécialité signature" },
+  { id: "1", value: "20", suffix: "+", label: "Ans" },
+  { id: "2", value: "100", suffix: "%", label: "Frais" },
+  { id: "3", value: "5", suffix: "★", label: "Avis" },
+  { id: "4", value: "1", suffix: "", label: "Signature" },
 ];
 
 export const philosophy = [
-  {
-    id: "1",
-    title: "Recettes traditionnelles",
-    text: "Des plats de brasserie transmis et peaufinés — respect du geste, générosité de l'assiette.",
-  },
-  {
-    id: "2",
-    title: "Produits de saison",
-    text: "Nous privilégions les arrivages du jour et les circuits courts pour une cuisine franche et vivante.",
-  },
-  {
-    id: "3",
-    title: "Héritage français",
-    text: "L'esprit des grandes brasseries : authenticité, convivialité et le plaisir de bien manger.",
-  },
+  { id: "1", title: "Recettes", text: "Traditions" },
+  { id: "2", title: "Saison", text: "Circuits courts" },
+  { id: "3", title: "Héritage", text: "Brasserie française" },
 ];
 
 export const testimonials: Testimonial[] = [
   {
     id: "1",
     name: "Marie L.",
-    role: "Habituée de Rodez",
-    quote:
-      "Une excellente adresse à Rodez. Les moules frites sont généreuses et savoureuses, le service est souriant. On y revient régulièrement en famille.",
+    role: "Rodez",
+    quote: "Les meilleures moules frites de Rodez. On y revient en famille.",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
@@ -164,9 +139,8 @@ export const testimonials: Testimonial[] = [
   {
     id: "2",
     name: "Philippe R.",
-    role: "Client régulier",
-    quote:
-      "Brasserie authentique, sans chichi. L'entrecôte est parfaitement grillée, les frites croustillantes. Une vraie table de quartier où l'on se sent bien.",
+    role: "Habitué",
+    quote: "Authentique, sans chichi. L'entrecôte est parfaite.",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
@@ -174,9 +148,8 @@ export const testimonials: Testimonial[] = [
   {
     id: "3",
     name: "Sophie M.",
-    role: "Avis Google",
-    quote:
-      "Ambiance chaleureuse et cuisine généreuse. Le foie gras maison est un régal. Idéal pour un déjeuner d'affaires ou un dîner détendu.",
+    role: "Google",
+    quote: "Ambiance chaleureuse, foie gras maison excellent.",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80",
@@ -184,9 +157,8 @@ export const testimonials: Testimonial[] = [
   {
     id: "4",
     name: "Jean-Pierre D.",
-    role: "Aveyronnais",
-    quote:
-      "Enfin une brasserie digne de ce nom à Rodez. Accueil impeccable, assiettes soignées. Les moules sont un vrai régal — je recommande vivement.",
+    role: "Aveyron",
+    quote: "Enfin une vraie brasserie. Accueil impeccable.",
     rating: 5,
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
@@ -197,49 +169,49 @@ export const galleryImages: GalleryImage[] = [
   {
     id: "1",
     src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80",
-    alt: "Intérieur chaleureux de brasserie",
+    alt: "Intérieur",
     span: "tall",
   },
   {
     id: "2",
     src: "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=1000&q=80",
-    alt: "Assiette de moules frites",
+    alt: "Moules frites",
     span: "normal",
   },
   {
     id: "3",
     src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1000&q=80",
-    alt: "Table dressée au restaurant",
+    alt: "Table",
     span: "wide",
   },
   {
     id: "4",
     src: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1000&q=80",
-    alt: "Entrecôte grillée et frites",
+    alt: "Grillades",
     span: "normal",
   },
   {
     id: "5",
     src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1000&q=80",
-    alt: "Ambiance de salle de restaurant",
+    alt: "Salle",
     span: "tall",
   },
   {
     id: "6",
     src: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1000&q=80",
-    alt: "Dessert crème brûlée",
+    alt: "Dessert",
     span: "normal",
   },
   {
     id: "7",
     src: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=1000&q=80",
-    alt: "Salle de restaurant élégante",
+    alt: "Ambiance",
     span: "wide",
   },
   {
     id: "8",
     src: "https://images.unsplash.com/photo-1544025162-d76694265947?w=1000&q=80",
-    alt: "Plat de viande grillée",
+    alt: "Viande",
     span: "normal",
   },
 ];

@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type RevealVariant = "up" | "left" | "right" | "clip" | "scale" | "fade";
+type RevealVariant = "up" | "left" | "right" | "clip" | "scale" | "fade" | "punchy";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -27,6 +27,20 @@ export function ScrollReveal({
 
   if (reduce) {
     return <div className={className}>{children}</div>;
+  }
+
+  if (direction === "punchy") {
+    return (
+      <motion.div
+        className={cn("will-change-transform", className)}
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once, margin: "-60px" }}
+        transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {children}
+      </motion.div>
+    );
   }
 
   if (direction === "clip") {

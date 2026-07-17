@@ -10,9 +10,8 @@ export function Location() {
     <Section id="location" divider>
       <ScrollReveal>
         <SectionHeading
-          eyebrow="Nous trouver"
-          title="Au cœur de Rodez"
-          description="23 Avenue de la Gineste — parking à proximité."
+          eyebrow="Accès"
+          title="Rodez"
         />
       </ScrollReveal>
 

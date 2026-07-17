@@ -2,61 +2,54 @@
 
 import Image from "next/image";
 import { philosophy } from "@/data/content";
-import { Section, SectionHeading } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ScrambleText } from "@/components/ui/ScrambleText";
 
 export function Philosophy() {
   return (
-    <Section id="savoir-faire" divider>
-      <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+    <Section id="savoir-faire" divider className="!py-16 sm:!py-20 md:!py-28">
+      <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5">
-          <ScrollReveal>
-            <SectionHeading
-              align="left"
-              eyebrow="Notre savoir-faire"
-              title="La tradition, au service du goût"
-              description="Des gestes précis, des produits choisis, et le respect de l'héritage des brasseries françaises."
-              className="mb-8 sm:mb-10"
-            />
+          <ScrollReveal direction="up">
+            <p className="text-[10px] uppercase tracking-[0.34em] text-gold">
+              Savoir-faire
+            </p>
+            <h2 className="mt-4 font-display text-4xl font-bold leading-[1.02] text-fg sm:text-5xl md:text-6xl">
+              <ScrambleText text="Tradition." />
+            </h2>
+            <div className="gold-rule mt-6" />
+            <p className="mt-6 max-w-xs text-base text-fg-muted">
+              Gestes précis. Produits choisis. Héritage français.
+            </p>
           </ScrollReveal>
 
-          <div className="space-y-7 sm:space-y-8">
+          <div className="mt-10 flex flex-wrap gap-3">
             {philosophy.map((item, i) => (
-              <ScrollReveal key={item.id} delay={i * 0.08}>
-                <article className="border-l-2 border-gold/50 pl-5 transition-colors hover:border-gold">
-                  <h3 className="font-display text-xl text-fg md:text-2xl">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-fg-muted md:text-[15px]">
-                    {item.text}
-                  </p>
-                </article>
+              <ScrollReveal key={item.id} delay={i * 0.06}>
+                <span className="border border-gold/35 bg-cream px-4 py-2 font-display text-lg text-fg transition-colors hover:border-gold hover:bg-gold-soft">
+                  {item.title}
+                </span>
               </ScrollReveal>
             ))}
           </div>
         </div>
 
-        <ScrollReveal delay={0.15} direction="clip" className="relative lg:col-span-7">
-          <p
-            className="pointer-events-none absolute -right-2 -top-8 z-10 hidden select-none font-display text-[5.5rem] leading-none text-gold/[0.12] lg:block"
-            aria-hidden
-          >
-            02
-          </p>
-          <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
+        <ScrollReveal delay={0.12} direction="clip" className="lg:col-span-7">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             <div className="img-zoom relative aspect-[3/4] overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80"
-                alt="Préparation en cuisine"
+                alt="Cuisine"
                 fill
                 sizes="(max-width: 1024px) 50vw, 30vw"
                 className="object-cover"
               />
             </div>
-            <div className="img-zoom relative mt-6 aspect-[3/4] overflow-hidden sm:mt-8 md:mt-12">
+            <div className="img-zoom relative mt-8 aspect-[3/4] overflow-hidden md:mt-14">
               <Image
                 src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&q=80"
-                alt="Plat de brasserie généreux"
+                alt="Plat"
                 fill
                 sizes="(max-width: 1024px) 50vw, 30vw"
                 className="object-cover"

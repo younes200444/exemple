@@ -32,9 +32,8 @@ export function Reviews() {
     <Section id="reviews" muted divider>
       <ScrollReveal>
         <SectionHeading
-          eyebrow="Avis clients"
-          title="Ils en parlent mieux que nous"
-          description="Des retours sincères de clients de Rodez et des environs."
+          eyebrow="Avis"
+          title="Ils en parlent"
         />
       </ScrollReveal>
 

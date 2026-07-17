@@ -3,7 +3,7 @@ import type { NavLink } from "@/types";
 export const SITE = {
   name: "Brasserie Jo De Bruges",
   shortName: "Jo De Bruges",
-  tagline: "Les saveurs authentiques de la brasserie française à Rodez",
+  tagline: "Brasserie française · Rodez",
   description:
     "Brasserie Jo De Bruges à Rodez — cuisine française traditionnelle, célèbre pour ses moules frites. Ambiance conviviale, produits frais. 23 Avenue de la Gineste, 12000 Rodez. Réservez votre table.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://brasserie-jodebruges.vercel.app",

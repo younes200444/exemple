@@ -38,10 +38,15 @@ export function Gallery() {
   }, [active, close, prev, next]);
 
   return (
-    <Section id="gallery" soft divider className="!py-10 sm:!py-12 md:!py-14">
+    <Section
+      id="gallery"
+      soft
+      divider
+      className="!py-10 sm:!py-12 md:!py-14 lg:!py-16 xl:!py-20"
+    >
       <ScrollReveal>
-        <div className="mb-6 text-center md:mb-8">
-          <h2 className="font-display text-4xl font-bold text-fg sm:text-5xl md:text-6xl">
+        <div className="mb-6 text-center md:mb-8 lg:mb-10">
+          <h2 className="font-display text-4xl font-bold text-fg sm:text-5xl md:text-6xl lg:text-7xl">
             Galerie
           </h2>
           <div className="gold-rule-center mt-4" />
@@ -60,9 +65,12 @@ export function Gallery() {
               onClick={() => setActive(i)}
               className={cn(
                 "gallery-tile group relative block w-full overflow-hidden bg-bg-muted text-left focus-visible:outline-none",
-                img.span === "tall" && "min-h-[280px] sm:min-h-[400px]",
-                img.span === "wide" && "min-h-[220px] sm:min-h-[270px]",
-                img.span === "normal" && "min-h-[240px] sm:min-h-[310px]"
+                img.span === "tall" &&
+                  "min-h-[280px] sm:min-h-[400px] lg:min-h-[440px]",
+                img.span === "wide" &&
+                  "min-h-[220px] sm:min-h-[270px] lg:min-h-[300px]",
+                img.span === "normal" &&
+                  "min-h-[240px] sm:min-h-[310px] lg:min-h-[340px]"
               )}
               aria-label={`Agrandir : ${img.alt}`}
               data-cursor="Zoom"

@@ -113,14 +113,14 @@ export function Signature() {
 
         {/* NEAR plane — copy & CTA */}
         <motion.div
-          className="relative z-10 mx-auto flex min-h-[90svh] max-w-6xl flex-col justify-end px-5 py-14 sm:px-8 md:min-h-[94svh] md:py-20"
+          className="relative z-10 mx-auto flex min-h-[90svh] max-w-6xl flex-col justify-end px-5 py-14 sm:px-8 md:min-h-[94svh] md:py-20 lg:max-w-7xl lg:py-24 xl:max-w-[88rem] xl:px-10"
           style={reduce ? undefined : { y: nearY }}
         >
           <ScrollReveal direction="up">
             <p className="text-[10px] font-medium uppercase tracking-[0.36em] text-ember drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)] sm:text-[11px]">
               Notre spécialité
             </p>
-            <h2 className="mt-4 max-w-3xl font-display text-[2.8rem] font-bold leading-[0.95] tracking-[-0.02em] text-white drop-shadow-[0_2px_28px_rgba(0,0,0,0.5)] sm:text-6xl md:text-7xl lg:text-8xl">
+            <h2 className="mt-4 max-w-3xl font-display text-[2.8rem] font-bold leading-[0.95] tracking-[-0.02em] text-white drop-shadow-[0_2px_28px_rgba(0,0,0,0.5)] sm:text-6xl md:text-7xl lg:max-w-4xl lg:text-8xl xl:text-[7.5rem]">
               <SplitTitle text="Moules Frites" delay={0.04} inView />
               <br />
               <SplitTitle
@@ -143,7 +143,7 @@ export function Signature() {
                   <p className="text-[9px] uppercase tracking-[0.22em] text-ember">
                     {spec.label}
                   </p>
-                  <p className="mt-2 font-display text-lg text-champagne sm:text-xl">
+                  <p className="mt-2 font-display text-lg text-champagne sm:text-xl lg:text-2xl">
                     {spec.value}
                   </p>
                 </div>

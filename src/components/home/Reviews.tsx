@@ -13,8 +13,9 @@ import { cn } from "@/lib/utils";
 export function Reviews() {
   const [index, setIndex] = useState(0);
   const isMobile = useMediaQuery("(max-width: 639px)");
+  const isWide = useMediaQuery("(min-width: 1280px)");
   const len = testimonials.length;
-  const spacing = isMobile ? 52 : 180;
+  const spacing = isMobile ? 52 : isWide ? 240 : 180;
 
   useEffect(() => {
     const t = setInterval(() => setIndex((i) => (i + 1) % len), 6500);
@@ -29,7 +30,12 @@ export function Reviews() {
   };
 
   return (
-    <Section id="reviews" muted divider className="texture-wine-light !py-10 sm:!py-12 md:!py-14">
+    <Section
+      id="reviews"
+      muted
+      divider
+      className="texture-wine-light !py-10 sm:!py-12 md:!py-14 lg:!py-16 xl:!py-20"
+    >
       <ScrollReveal>
         <SectionHeading
           eyebrow="Avis"
@@ -40,7 +46,7 @@ export function Reviews() {
       <ScrollReveal direction="scale">
         <div className="relative mx-auto max-w-5xl">
           <div
-            className="relative flex h-[400px] items-center justify-center overflow-hidden sm:h-[440px] md:h-[460px]"
+            className="relative flex h-[400px] items-center justify-center overflow-hidden sm:h-[440px] md:h-[460px] lg:h-[500px]"
             style={{ perspective: "1200px" }}
           >
             {testimonials.map((t, i) => {
@@ -52,7 +58,7 @@ export function Reviews() {
                 <motion.article
                   key={t.id}
                   className={cn(
-                    "absolute w-[min(88vw,22rem)] border bg-cream p-6 shadow-[var(--shadow-lift)] will-change-transform sm:w-[24rem] sm:p-8 md:w-[26rem] md:p-10",
+                    "absolute w-[min(88vw,22rem)] border bg-cream p-6 shadow-[var(--shadow-lift)] will-change-transform sm:w-[24rem] sm:p-8 md:w-[26rem] md:p-10 lg:w-[28rem] lg:p-11",
                     isActive ? "border-gold/40" : "border-border/40"
                   )}
                   animate={{

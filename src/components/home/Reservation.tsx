@@ -50,7 +50,12 @@ export function Reservation() {
   };
 
   return (
-    <Section id="reservation" soft divider className="texture-ember !py-10 sm:!py-12 md:!py-14">
+    <Section
+      id="reservation"
+      soft
+      divider
+      className="texture-ember !py-10 sm:!py-12 md:!py-14 lg:!py-16 xl:!py-20"
+    >
       <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <ScrollReveal>
@@ -60,15 +65,15 @@ export function Reservation() {
               title="Votre table"
               className="mb-6"
             />
-            <p className="max-w-sm text-sm leading-relaxed text-fg-muted">
+            <p className="max-w-sm text-sm leading-relaxed text-fg-muted lg:max-w-md lg:text-base xl:text-lg">
               Remplissez le formulaire : votre messagerie s&apos;ouvre avec la
               demande prête à envoyer. Pour une confirmation immédiate,
               appelez-nous.
             </p>
-            <p className="mt-6">
+            <p className="mt-6 lg:mt-8">
               <a
                 href={`tel:${SITE.phoneHref}`}
-                className="inline-flex items-center gap-2 font-display text-2xl text-ember transition-colors hover:text-gold"
+                className="inline-flex items-center gap-2 font-display text-2xl text-ember transition-colors hover:text-gold lg:text-3xl"
               >
                 <Phone size={22} aria-hidden />
                 {SITE.phone}

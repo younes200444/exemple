@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-charcoal-deep text-white">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_0%,rgba(201,146,58,0.14),transparent),radial-gradient(ellipse_50%_40%_at_100%_100%,rgba(122,42,44,0.18),transparent)]" />
-      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-3 md:py-14">
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-3 md:py-14 lg:max-w-7xl lg:gap-14 lg:py-16 xl:max-w-[88rem] xl:px-10">
         <div>
           <p className="font-display text-2xl md:text-3xl">
             <span className="text-gradient-gold">{SITE.shortName}</span>
@@ -63,7 +63,7 @@ export function Footer() {
       </div>
 
       <div className="relative border-t border-gold/15">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-white/40 sm:flex-row sm:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-white/40 sm:flex-row sm:px-8 lg:max-w-7xl xl:max-w-[88rem] xl:px-10">
           <p>
             © {new Date().getFullYear()} {SITE.name}. Tous droits réservés.
           </p>

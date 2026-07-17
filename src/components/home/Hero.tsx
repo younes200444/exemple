@@ -80,13 +80,13 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-charcoal-deep via-charcoal-deep/70 to-transparent" />
 
       <motion.div
-        className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:pb-36 md:pt-40"
+        className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-20 pt-32 sm:px-8 sm:pb-28 md:pb-36 md:pt-40 lg:max-w-7xl lg:pb-40 lg:pt-44 xl:max-w-[88rem] xl:px-10"
         style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
       >
         <div className="pointer-events-none absolute inset-x-0 bottom-0 top-1/3 -z-10 bg-gradient-to-t from-charcoal-deep/80 via-charcoal-deep/35 to-transparent sm:hidden" />
 
         <motion.p
-          className="mb-5 text-[10px] font-medium uppercase tracking-[0.42em] text-gold-bright drop-shadow-[0_1px_8px_rgba(0,0,0,0.55)] sm:mb-7 sm:text-[11px]"
+          className="mb-5 text-[10px] font-medium uppercase tracking-[0.42em] text-gold-bright drop-shadow-[0_1px_8px_rgba(0,0,0,0.55)] sm:mb-7 sm:text-[11px] lg:text-xs"
           initial={reduce ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05, ease: MOTION_EASE }}
@@ -94,7 +94,7 @@ export function Hero() {
           Brasserie · Rodez
         </motion.p>
 
-        <h1 className="font-display text-[2.85rem] font-bold leading-[0.94] tracking-[-0.03em] text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)] sm:text-7xl md:text-8xl lg:text-[7.25rem]">
+        <h1 className="font-display text-[2.85rem] font-bold leading-[0.94] tracking-[-0.03em] text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)] sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem]">
           <SplitTitle
             text="Jo De Bruges"
             delay={0.08}
@@ -103,14 +103,14 @@ export function Hero() {
         </h1>
 
         <motion.div
-          className="mt-5 h-[2px] bg-gradient-to-r from-ember via-gold to-transparent sm:mt-7"
+          className="mt-5 h-[2px] bg-gradient-to-r from-ember via-gold to-transparent sm:mt-7 lg:mt-8"
           initial={reduce ? false : { width: 0, opacity: 0 }}
           animate={{ width: "min(12rem, 42%)", opacity: 1 }}
           transition={{ duration: 0.65, delay: 0.28, ease: MOTION_EASE }}
         />
 
         <motion.p
-          className="mt-4 max-w-md text-[15px] font-light text-champagne/95 drop-shadow-[0_1px_12px_rgba(0,0,0,0.4)] sm:mt-6 sm:text-lg md:text-xl"
+          className="mt-4 max-w-md text-[15px] font-light text-champagne/95 drop-shadow-[0_1px_12px_rgba(0,0,0,0.4)] sm:mt-6 sm:text-lg md:text-xl lg:max-w-lg lg:text-2xl"
           initial={reduce ? false : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.26, ease: MOTION_EASE }}

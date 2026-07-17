@@ -16,14 +16,13 @@ export interface EditorialMomentProps {
   line: string;
   image: string;
   imageAlt: string;
-  /** Dark cinematic vs warmer cream-tinted overlay */
   tone?: "dark" | "warm";
   className?: string;
 }
 
 /**
- * Compact editorial beat (≤ ~33vh): photo + overlay + title + line.
- * Not a watermark — a composed moment with scroll parallax.
+ * Compact editorial beat. Mobile height stays tight; desktop uses more presence
+ * and a wider content rail without changing the mobile composition.
  */
 export function EditorialBreak({
   title,
@@ -49,7 +48,7 @@ export function EditorialBreak({
       ref={ref}
       className={cn(
         "relative isolate overflow-hidden",
-        "min-h-[26vh] sm:min-h-[28vh]",
+        "min-h-[26vh] sm:min-h-[28vh] md:min-h-[34vh] lg:min-h-[38vh] xl:min-h-[42vh]",
         className
       )}
       aria-label={title}
@@ -64,7 +63,7 @@ export function EditorialBreak({
           fill
           sizes="100vw"
           className={cn(
-            "object-cover",
+            "object-cover object-center",
             tone === "dark" && "grayscale-[0.35] contrast-[1.05]"
           )}
         />
@@ -74,8 +73,8 @@ export function EditorialBreak({
         className={cn(
           "absolute inset-0",
           tone === "dark"
-            ? "bg-gradient-to-r from-charcoal-deep/92 via-charcoal-deep/78 to-wine/55"
-            : "bg-gradient-to-r from-charcoal/80 via-ember/45 to-charcoal-deep/70"
+            ? "bg-gradient-to-r from-charcoal-deep/92 via-charcoal-deep/75 to-wine/50 lg:from-charcoal-deep/88 lg:via-charcoal-deep/55 lg:to-transparent"
+            : "bg-gradient-to-r from-charcoal/80 via-ember/45 to-charcoal-deep/70 lg:from-charcoal/78 lg:via-ember/35 lg:to-transparent"
         )}
         aria-hidden
       />
@@ -85,11 +84,11 @@ export function EditorialBreak({
       />
 
       <motion.div
-        className="relative z-10 mx-auto flex h-full min-h-[26vh] max-w-6xl flex-col items-start justify-center px-5 py-10 sm:min-h-[28vh] sm:px-8 sm:py-12"
+        className="relative z-10 mx-auto flex h-full min-h-[26vh] max-w-6xl flex-col items-start justify-center px-5 py-10 sm:min-h-[28vh] sm:px-8 sm:py-12 md:min-h-[34vh] md:py-14 lg:min-h-[38vh] lg:max-w-7xl lg:py-16 xl:min-h-[42vh] xl:max-w-[88rem] xl:px-10 xl:py-20"
         style={reduce ? undefined : { y: contentY }}
       >
         <motion.p
-          className="text-[10px] font-medium uppercase tracking-[0.36em] text-ember sm:text-[11px]"
+          className="text-[10px] font-medium uppercase tracking-[0.36em] text-ember sm:text-[11px] lg:text-xs"
           initial={reduce ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
@@ -98,7 +97,7 @@ export function EditorialBreak({
           Jo De Bruges
         </motion.p>
         <motion.h2
-          className="mt-3 max-w-xl font-display text-3xl font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.45)] sm:text-4xl md:text-5xl"
+          className="mt-3 max-w-xl font-display text-3xl font-bold leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.45)] sm:text-4xl md:max-w-2xl md:text-5xl lg:max-w-3xl lg:text-6xl xl:text-7xl"
           initial={reduce ? false : { opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
@@ -107,7 +106,7 @@ export function EditorialBreak({
           {title}
         </motion.h2>
         <motion.div
-          className="mt-4 h-[2px] w-16 bg-gradient-to-r from-ember via-gold to-transparent"
+          className="mt-4 h-[2px] w-16 bg-gradient-to-r from-ember via-gold to-transparent lg:mt-5 lg:w-24"
           initial={reduce ? false : { scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true, margin: "-10%" }}
@@ -115,7 +114,7 @@ export function EditorialBreak({
           style={{ transformOrigin: "left" }}
         />
         <motion.p
-          className="mt-4 max-w-md text-[15px] leading-relaxed text-champagne/90 sm:text-base"
+          className="mt-4 max-w-md text-[15px] leading-relaxed text-champagne/90 sm:text-base md:max-w-lg md:text-lg lg:mt-5 lg:max-w-xl lg:text-xl"
           initial={reduce ? false : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}

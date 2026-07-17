@@ -23,13 +23,13 @@ export function Navbar() {
       )}
     >
       <nav
-        className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-5 sm:h-[5rem] sm:px-8"
+        className="mx-auto grid h-[4.25rem] max-w-6xl grid-cols-[1fr_auto] items-center px-5 sm:h-[5rem] sm:px-8 lg:max-w-7xl lg:grid-cols-[1fr_auto_1fr] xl:max-w-[88rem] xl:px-10"
         aria-label="Navigation principale"
       >
         <Link
           href="/"
           className={cn(
-            "font-display text-lg leading-tight tracking-wide transition-colors sm:text-xl",
+            "justify-self-start font-display text-lg leading-tight tracking-wide transition-colors sm:text-xl lg:text-2xl",
             scrolled || open ? "text-fg" : "text-white"
           )}
           onClick={() => setOpen(false)}
@@ -37,13 +37,13 @@ export function Navbar() {
           {SITE.shortName}
         </Link>
 
-        <ul className="hidden items-center gap-6 lg:flex xl:gap-7">
+        <ul className="hidden items-center justify-center gap-6 justify-self-center lg:flex xl:gap-9">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 className={cn(
-                  "relative text-[11px] uppercase tracking-[0.16em] transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full",
+                  "relative text-[11px] uppercase tracking-[0.16em] transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full xl:text-xs",
                   scrolled
                     ? "text-fg-muted hover:text-gold"
                     : "text-white/75 hover:text-white"
@@ -55,7 +55,7 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2 justify-self-end">
           <div className="hidden sm:block">
             <Button href="#reservation" size="sm">
               Réserver

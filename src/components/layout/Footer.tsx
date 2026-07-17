@@ -14,15 +14,17 @@ export function Footer() {
             Brasserie française à Rodez — moules frites, cuisine traditionnelle
             et ambiance conviviale.
           </p>
-          <a
-            href={SITE.social.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            className="mt-6 inline-flex h-10 w-10 items-center justify-center border border-gold/30 text-champagne transition-colors hover:border-gold hover:bg-gold/10 hover:text-gold-bright"
-          >
-            <FacebookIcon size={18} />
-          </a>
+          {SITE.social.facebook ? (
+            <a
+              href={SITE.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="mt-6 inline-flex h-10 w-10 items-center justify-center border border-gold/30 text-champagne transition-colors hover:border-gold hover:bg-gold/10 hover:text-gold-bright"
+            >
+              <FacebookIcon size={18} />
+            </a>
+          ) : null}
         </div>
 
         <div>
@@ -65,7 +67,12 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {SITE.name}. Tous droits réservés.
           </p>
-          <p>Proposition web professionnelle — démo</p>
+          <a
+            href={`tel:${SITE.phoneHref}`}
+            className="transition-colors hover:text-gold"
+          >
+            {SITE.phone}
+          </a>
         </div>
       </div>
     </footer>

@@ -53,8 +53,6 @@ export function ScrambleText({
     <Tag
       className={cn("inline-block cursor-default", className)}
       onMouseEnter={scramble}
-      onFocus={scramble}
-      tabIndex={0}
     >
       {display}
     </Tag>

@@ -37,7 +37,7 @@ export function Navbar() {
           {SITE.shortName}
         </Link>
 
-        <ul className="hidden items-center gap-7 xl:flex">
+        <ul className="hidden items-center gap-6 lg:flex xl:gap-7">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
@@ -64,7 +64,7 @@ export function Navbar() {
           <button
             type="button"
             className={cn(
-              "inline-flex h-10 w-10 items-center justify-center xl:hidden",
+              "inline-flex h-10 w-10 items-center justify-center lg:hidden",
               scrolled || open ? "text-fg" : "text-white"
             )}
             onClick={() => setOpen((v) => !v)}
@@ -84,7 +84,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-b border-gold/20 bg-[#fffaf4] xl:hidden"
+            className="overflow-hidden border-b border-gold/20 bg-[#fffaf4] lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-5 py-5">
               {NAV_LINKS.map((link) => (

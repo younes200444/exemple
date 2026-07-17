@@ -24,10 +24,10 @@ export const SITE = {
     { day: "Dimanche", time: "12h00 – 14h30" },
   ],
   social: {
-    facebook: "https://www.facebook.com/",
+    facebook: "",
   },
   mapEmbed:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2871.5!2d2.575!3d44.349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ac4f0f0f0f0f0f%3A0x0!2s23%20Avenue%20de%20la%20Gineste%2C%2012000%20Rodez!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr",
+    "https://www.google.com/maps?q=23+Avenue+de+la+Gineste,+12000+Rodez,+France&hl=fr&z=16&output=embed",
   ogImage:
     "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
 } as const;

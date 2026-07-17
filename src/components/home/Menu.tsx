@@ -43,11 +43,11 @@ export function Menu() {
                   {item.name}
                 </h3>
                 <span className="menu-dots hidden sm:block" aria-hidden />
-                <motion.span
-                  className="ml-auto shrink-0 font-display text-lg text-ember sm:text-xl"
-                  whileHover={{ scale: 1.08 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 22 }}
-                >
+                  <motion.span
+                    className="ml-auto shrink-0 font-display text-lg text-fg sm:text-xl"
+                    whileHover={{ scale: 1.06 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 22 }}
+                  >
                   {formatPrice(item.price)}
                 </motion.span>
               </li>
@@ -74,17 +74,17 @@ export function Menu() {
                       <h4 className="font-display text-lg text-fg transition-colors duration-300 group-hover:text-ember sm:text-xl">
                         {item.name}
                         {item.signature && (
-                          <span className="ml-2 text-[9px] uppercase tracking-[0.18em] text-gold">
-                            ★
+                          <span className="ml-2 text-[10px] font-medium uppercase tracking-[0.14em] text-ember">
+                            Signature
                           </span>
                         )}
                       </h4>
-                      <p className="mt-0.5 text-xs tracking-wide text-fg-subtle">
+                      <p className="mt-0.5 text-sm tracking-wide text-fg-muted">
                         {item.description}
                       </p>
                     </div>
                     <span className="menu-dots hidden sm:block" aria-hidden />
-                    <span className="shrink-0 text-sm font-medium text-gold transition-colors group-hover:text-ember">
+                    <span className="shrink-0 text-sm font-medium text-fg sm:text-base">
                       {formatPrice(item.price)}
                     </span>
                   </li>

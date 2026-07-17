@@ -115,8 +115,8 @@ export const whyUs = [
 
 export const stats: StatItem[] = [
   { id: "1", value: "20", suffix: "+", label: "Ans" },
-  { id: "2", value: "100", suffix: "%", label: "Frais" },
-  { id: "3", value: "5", suffix: "★", label: "Avis" },
+  { id: "2", value: "100", suffix: "%", label: "Frais du jour" },
+  { id: "3", value: "Rodez", suffix: "", label: "Avenue de la Gineste" },
   { id: "4", value: "1", suffix: "", label: "Signature" },
 ];
 

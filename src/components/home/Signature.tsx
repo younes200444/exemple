@@ -18,7 +18,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 const specs = [
   { label: "Origine", value: "Bouchot" },
   { label: "Sauce", value: "Marinière" },
-  { label: "Side", value: "Frites" },
+  { label: "Accompagnement", value: "Frites" },
   { label: "Prix", value: "18,50 €" },
 ];
 
@@ -124,7 +124,7 @@ export function Signature() {
               <SplitTitle text="Moules Frites" delay={0.04} inView />
               <br />
               <SplitTitle
-                text="★ Signature"
+                text="Signature"
                 delay={0.18}
                 inView
                 gradientClassName="text-gradient-gold"

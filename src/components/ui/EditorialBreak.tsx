@@ -49,7 +49,7 @@ export function EditorialBreak({
       ref={ref}
       className={cn(
         "relative isolate overflow-hidden",
-        "min-h-[28vh] max-h-[34vh] sm:min-h-[30vh] sm:max-h-[32vh]",
+        "min-h-[26vh] sm:min-h-[28vh]",
         className
       )}
       aria-label={title}
@@ -85,7 +85,7 @@ export function EditorialBreak({
       />
 
       <motion.div
-        className="relative z-10 mx-auto flex h-full min-h-[28vh] max-w-6xl flex-col items-start justify-center px-5 py-10 sm:min-h-[30vh] sm:px-8 sm:py-12"
+        className="relative z-10 mx-auto flex h-full min-h-[26vh] max-w-6xl flex-col items-start justify-center px-5 py-10 sm:min-h-[28vh] sm:px-8 sm:py-12"
         style={reduce ? undefined : { y: contentY }}
       >
         <motion.p

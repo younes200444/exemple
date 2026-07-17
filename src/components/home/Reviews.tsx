@@ -57,10 +57,9 @@ export function Reviews() {
                   )}
                   animate={{
                     x: offset * spacing,
-                    scale: isActive ? 1 : Math.max(0.78, 0.86 - abs * 0.04),
-                    opacity: abs > 1 ? 0 : isActive ? 1 : 0.38,
-                    filter: isActive ? "blur(0px)" : "blur(2.5px)",
-                    rotateY: offset * -7,
+                    scale: isActive ? 1 : Math.max(0.82, 0.9 - abs * 0.04),
+                    opacity: abs > 1 ? 0 : isActive ? 1 : 0.55,
+                    rotateY: offset * -6,
                     zIndex: 20 - abs,
                   }}
                   transition={{ type: "spring", stiffness: 220, damping: 28 }}

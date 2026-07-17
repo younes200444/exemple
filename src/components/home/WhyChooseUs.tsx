@@ -27,17 +27,17 @@ export function WhyChooseUs() {
           return (
             <ScrollReveal key={item.id} delay={i * 0.05} direction="up">
               <motion.article
-                className="group flex aspect-square flex-col items-center justify-center border border-border bg-cream/70 p-4 text-center transition-colors duration-300 hover:border-ember/50 hover:bg-cream sm:p-6"
-                whileHover={{ y: -6 }}
+                className="flex min-h-[9.5rem] flex-col items-center justify-center border border-border bg-cream/70 p-4 text-center transition-colors duration-300 hover:border-ember/50 hover:bg-cream sm:min-h-[11rem] sm:p-6"
+                whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 320, damping: 20 }}
               >
-                <div className={`mb-4 ${accents[i % accents.length]}`}>
-                  <Icon size={28} aria-hidden />
+                <div className={`mb-3 ${accents[i % accents.length]}`}>
+                  <Icon size={26} aria-hidden />
                 </div>
-                <h3 className="font-display text-2xl text-fg sm:text-3xl">
+                <h3 className="font-display text-xl text-fg sm:text-2xl">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-fg-subtle opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <p className="mt-1.5 text-xs tracking-wide text-fg-muted sm:text-sm">
                   {item.description}
                 </p>
               </motion.article>

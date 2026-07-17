@@ -60,19 +60,18 @@ export function JsonLd() {
         closes: "14:30",
       },
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "120",
-      bestRating: "5",
-    },
-    sameAs: [SITE.social.facebook],
+    aggregateRating: undefined,
+    sameAs: SITE.social.facebook ? [SITE.social.facebook] : undefined,
   };
+
+  const cleaned = Object.fromEntries(
+    Object.entries(data).filter(([, v]) => v !== undefined)
+  );
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(cleaned) }}
     />
   );
 }

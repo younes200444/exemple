@@ -15,19 +15,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-gold text-charcoal hover:bg-gold-hover shadow-[0_12px_32px_-12px_rgba(196,163,90,0.55)]",
-  secondary: "bg-charcoal text-white hover:bg-charcoal-deep",
+    "bg-gold text-charcoal hover:bg-gold-hover shadow-[var(--shadow-gold)] hover:-translate-y-0.5",
+  secondary:
+    "bg-charcoal text-white hover:bg-charcoal-deep hover:-translate-y-0.5",
   ghost: "bg-transparent text-fg hover:bg-gold-soft",
   outline:
-    "border border-border bg-transparent text-fg hover:border-gold hover:text-gold",
+    "border border-border bg-transparent text-fg hover:border-gold hover:text-gold hover:-translate-y-0.5",
   outlineLight:
-    "border border-white/45 bg-transparent text-white hover:border-gold hover:text-gold",
+    "border border-white/50 bg-transparent text-white hover:border-gold hover:text-gold hover:bg-white/5 hover:-translate-y-0.5",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "px-5 py-2.5 text-sm",
-  md: "px-7 py-3.5 text-sm tracking-[0.04em]",
-  lg: "px-9 py-4 text-base tracking-[0.04em]",
+  sm: "px-5 py-2.5 text-[11px] tracking-[0.16em]",
+  md: "px-7 py-3.5 text-[12px] tracking-[0.16em]",
+  lg: "px-8 py-4 text-[12px] tracking-[0.18em] sm:px-10 sm:text-[13px]",
 };
 
 export function Button({
@@ -39,7 +40,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-none font-medium uppercase transition-all duration-300 focus-visible:outline-none disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 rounded-none font-medium uppercase transition-all duration-300 ease-out focus-visible:outline-none disabled:opacity-50 disabled:hover:translate-y-0",
     variants[variant],
     sizes[size],
     className

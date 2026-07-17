@@ -1,11 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useRef } from "react";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/constants";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -15,8 +22,8 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
 
   return (
     <section
@@ -24,17 +31,24 @@ export function Hero() {
       className="relative flex min-h-[100svh] items-end overflow-hidden"
     >
       <motion.div
-        className="absolute inset-0"
+        className="absolute inset-0 will-change-transform"
         style={reduce ? undefined : { scale: imageScale }}
       >
-        <Image
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80"
-          alt="Ambiance intérieure de la Brasserie Jo De Bruges à Rodez"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
+        <motion.div
+          className="absolute inset-0"
+          initial={reduce ? false : { scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2.4, ease }}
+        >
+          <Image
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80"
+            alt="Ambiance intérieure de la Brasserie Jo De Bruges à Rodez"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </motion.div>
       </motion.div>
 
       <div
@@ -42,55 +56,59 @@ export function Hero() {
         style={{ background: "var(--hero-overlay)" }}
         aria-hidden
       />
-
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-charcoal-deep/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-charcoal-deep to-transparent" />
 
       <motion.div
-        className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-28 pt-36 sm:px-8 md:pb-32"
+        className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-24 pt-32 sm:px-8 sm:pb-28 md:pb-32 md:pt-36"
         style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
       >
         <motion.div
-          className="ornament mb-6 justify-start"
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
+          className="ornament mb-5 justify-start sm:mb-7"
+          initial={reduce ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.35, ease }}
         >
-          <span className="text-[11px] font-medium uppercase tracking-[0.36em] text-gold">
+          <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-gold sm:text-[11px]">
             Brasserie · Rodez
           </span>
         </motion.div>
 
         <motion.h1
-          className="font-display text-[2.75rem] font-medium leading-[1.02] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
-          initial={reduce ? false : { opacity: 0, y: 36 }}
+          className="font-display text-[2.6rem] font-medium leading-[0.98] text-white sm:text-6xl md:text-7xl lg:text-[5.75rem]"
+          initial={reduce ? false : { opacity: 0, y: 42 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          transition={{ duration: 1.05, delay: 0.45, ease }}
         >
           Brasserie
           <br />
-          <span className="text-champagne">Jo De Bruges</span>
+          <span className="italic text-champagne">Jo De Bruges</span>
         </motion.h1>
 
         <motion.p
-          className="mt-6 max-w-xl text-base font-light leading-relaxed text-white/80 sm:text-lg md:mt-8 md:text-xl"
-          initial={reduce ? false : { opacity: 0, y: 24 }}
+          className="mt-5 max-w-lg text-[15px] font-light leading-relaxed text-white/78 sm:mt-7 sm:max-w-xl sm:text-lg md:mt-8 md:text-xl"
+          initial={reduce ? false : { opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.35 }}
+          transition={{ duration: 0.9, delay: 0.65, ease }}
         >
           {SITE.tagline}
         </motion.p>
 
         <motion.div
-          className="mt-10 flex flex-wrap gap-3 sm:gap-4"
-          initial={reduce ? false : { opacity: 0, y: 20 }}
+          className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4"
+          initial={reduce ? false : { opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.5 }}
+          transition={{ duration: 0.85, delay: 0.82, ease }}
         >
-          <Button href="#reservation" size="lg">
+          <Button href="#reservation" size="lg" className="w-full sm:w-auto">
             Réserver une table
-            <ArrowRight size={18} />
+            <ArrowRight size={17} />
           </Button>
-          <Button href="#menu" variant="outlineLight" size="lg">
+          <Button
+            href="#menu"
+            variant="outlineLight"
+            size="lg"
+            className="w-full sm:w-auto"
+          >
             Découvrir notre menu
           </Button>
         </motion.div>
@@ -98,12 +116,12 @@ export function Hero() {
 
       <motion.a
         href="#experience"
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-white/50 transition-colors hover:text-gold"
+        className="absolute bottom-7 left-1/2 z-10 hidden -translate-x-1/2 text-white/45 transition-colors hover:text-gold sm:block"
         aria-label="Découvrir l'expérience"
-        animate={reduce ? undefined : { y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut" }}
+        animate={reduce ? undefined : { y: [0, 7, 0] }}
+        transition={{ repeat: Infinity, duration: 2.6, ease: "easeInOut" }}
       >
-        <ArrowDown size={22} />
+        <ArrowDown size={20} />
       </motion.a>
     </section>
   );

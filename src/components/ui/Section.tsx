@@ -8,6 +8,7 @@ interface SectionProps {
   soft?: boolean;
   muted?: boolean;
   dark?: boolean;
+  divider?: boolean;
 }
 
 export function Section({
@@ -17,15 +18,17 @@ export function Section({
   soft,
   muted,
   dark,
+  divider,
 }: SectionProps) {
   return (
     <section
       id={id}
       className={cn(
-        "relative scroll-mt-24 py-24 md:py-32",
+        "relative scroll-mt-24 py-20 sm:py-24 md:py-32",
         soft && "texture-paper",
         muted && "bg-bg-muted",
         dark && "bg-charcoal text-white",
+        divider && "section-divider",
         className
       )}
     >
@@ -54,24 +57,19 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "mb-14 md:mb-20 max-w-2xl",
+        "mb-12 max-w-2xl sm:mb-14 md:mb-20",
         align === "center" && "mx-auto text-center",
         className
       )}
     >
       {eyebrow && (
-        <p
-          className={cn(
-            "mb-4 text-[11px] font-medium uppercase tracking-[0.32em]",
-            "text-gold"
-          )}
-        >
+        <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.34em] text-gold sm:mb-4 sm:text-[11px]">
           {eyebrow}
         </p>
       )}
       <h2
         className={cn(
-          "font-display text-3xl font-medium leading-[1.12] md:text-5xl lg:text-[3.25rem]",
+          "font-display text-[1.85rem] font-medium leading-[1.12] sm:text-4xl md:text-5xl lg:text-[3.35rem]",
           light ? "text-white" : "text-fg"
         )}
       >
@@ -79,14 +77,14 @@ export function SectionHeading({
       </h2>
       <div
         className={cn(
-          "mt-6",
+          "mt-5 sm:mt-6",
           align === "center" ? "gold-rule-center" : "gold-rule"
         )}
       />
       {description && (
         <p
           className={cn(
-            "mt-6 text-base leading-relaxed md:text-lg",
+            "mt-5 text-[15px] leading-relaxed sm:mt-6 sm:text-base md:text-lg",
             light ? "text-white/70" : "text-fg-muted"
           )}
         >

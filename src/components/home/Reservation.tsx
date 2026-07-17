@@ -26,8 +26,8 @@ export function Reservation() {
   };
 
   return (
-    <Section id="reservation" soft>
-      <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+    <Section id="reservation" soft divider>
+      <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <ScrollReveal>
             <SectionHeading
@@ -35,12 +35,12 @@ export function Reservation() {
               eyebrow="Réservation"
               title="Réservez votre table"
               description="Quelques clics suffisent — nous vous reconfirmons rapidement par téléphone."
-              className="mb-8"
+              className="mb-7 sm:mb-8"
             />
-            <ul className="space-y-4">
+            <ul className="space-y-3.5 sm:space-y-4">
               {trusts.map((t) => (
                 <li key={t.label} className="flex items-center gap-3 text-sm text-fg-muted">
-                  <span className="inline-flex h-10 w-10 items-center justify-center bg-gold-soft text-gold">
+                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-gold-soft text-gold">
                     <t.icon size={18} aria-hidden />
                   </span>
                   {t.label}
@@ -60,7 +60,7 @@ export function Reservation() {
         </div>
 
         <ScrollReveal delay={0.1} className="lg:col-span-7">
-          <div className="border border-border bg-white p-6 shadow-[0_28px_60px_-40px_rgba(23,23,23,0.4)] md:p-10">
+          <div className="border border-border bg-white p-5 shadow-[var(--shadow-lift)] sm:p-6 md:p-10">
             {status === "success" ? (
               <div className="py-10 text-center" role="status">
                 <CheckCircle2 className="mx-auto text-gold" size={40} />

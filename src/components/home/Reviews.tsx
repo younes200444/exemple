@@ -21,7 +21,7 @@ export function Reviews() {
   const current = testimonials[index];
 
   return (
-    <Section id="reviews" muted>
+    <Section id="reviews" muted divider>
       <ScrollReveal>
         <SectionHeading
           eyebrow="Avis clients"
@@ -32,7 +32,7 @@ export function Reviews() {
 
       <ScrollReveal>
         <div className="relative mx-auto max-w-3xl">
-          <div className="overflow-hidden bg-white px-6 py-12 shadow-[0_24px_60px_-36px_rgba(23,23,23,0.35)] md:px-14 md:py-16">
+          <div className="overflow-hidden border border-border/60 bg-white px-5 py-10 shadow-[var(--shadow-lift)] sm:px-8 sm:py-12 md:px-14 md:py-16">
             <AnimatePresence mode="wait">
               <motion.blockquote
                 key={current.id}

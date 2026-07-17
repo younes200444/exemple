@@ -6,8 +6,9 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function Stats() {
   return (
-    <section className="border-y border-border bg-bg-soft py-16 md:py-20">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-5 sm:px-8 md:grid-cols-4 md:gap-8">
+    <section className="relative border-y border-border bg-bg-soft py-14 sm:py-16 md:py-20">
+      <div className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px w-40 bg-gradient-to-r from-transparent via-gold to-transparent opacity-60" />
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-5 sm:gap-10 sm:px-8 md:grid-cols-4 md:gap-8">
         {stats.map((stat, i) => {
           const numeric = Number.parseInt(stat.value, 10);
           const isNumeric = !Number.isNaN(numeric);

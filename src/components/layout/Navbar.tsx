@@ -43,7 +43,7 @@ export function Navbar() {
               <a
                 href={link.href}
                 className={cn(
-                  "text-[12px] uppercase tracking-[0.14em] transition-colors",
+                  "relative text-[11px] uppercase tracking-[0.16em] transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full",
                   scrolled
                     ? "text-fg-muted hover:text-gold"
                     : "text-white/75 hover:text-white"

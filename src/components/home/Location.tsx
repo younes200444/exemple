@@ -7,7 +7,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function Location() {
   return (
-    <Section id="location">
+    <Section id="location" divider>
       <ScrollReveal>
         <SectionHeading
           eyebrow="Nous trouver"

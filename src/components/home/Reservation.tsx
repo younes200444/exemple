@@ -1,0 +1,152 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+import { Section, SectionHeading } from "@/components/ui/Section";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { Button } from "@/components/ui/Button";
+
+const inputClass =
+  "w-full border border-border bg-white px-4 py-3 text-sm text-fg placeholder:text-fg-subtle transition-colors focus:border-gold";
+
+export function Reservation() {
+  const [status, setStatus] = useState<"idle" | "success">("idle");
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("success");
+    e.currentTarget.reset();
+  };
+
+  return (
+    <Section id="reservation" soft>
+      <div className="mx-auto max-w-2xl">
+        <ScrollReveal>
+          <SectionHeading
+            eyebrow="Réservation"
+            title="Réservez votre table"
+            description="Quelques clics suffisent — nous vous reconfirmons rapidement par téléphone."
+          />
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.1}>
+          {status === "success" ? (
+            <div
+              className="border border-gold/30 bg-gold-soft p-8 text-center"
+              role="status"
+            >
+              <p className="font-display text-2xl text-fg">Demande envoyée</p>
+              <p className="mt-2 text-sm text-fg-muted">
+                Merci ! Nous vous contactons sous peu pour confirmer votre
+                réservation.
+              </p>
+              <Button
+                className="mt-6"
+                variant="outline"
+                onClick={() => setStatus("idle")}
+              >
+                Nouvelle demande
+              </Button>
+            </div>
+          ) : (
+            <form
+              onSubmit={onSubmit}
+              className="space-y-5 border border-border bg-white p-6 md:p-8"
+              noValidate
+            >
+              <div className="grid gap-5 sm:grid-cols-2">
+                <Field id="name" label="Nom" required>
+                  <input
+                    id="name"
+                    name="name"
+                    required
+                    autoComplete="name"
+                    className={inputClass}
+                    placeholder="Votre nom"
+                  />
+                </Field>
+                <Field id="phone" label="Téléphone" required>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    autoComplete="tel"
+                    className={inputClass}
+                    placeholder="06 XX XX XX XX"
+                  />
+                </Field>
+              </div>
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                <Field id="date" label="Date" required>
+                  <input
+                    id="date"
+                    name="date"
+                    type="date"
+                    required
+                    className={inputClass}
+                  />
+                </Field>
+                <Field id="guests" label="Nombre de personnes" required>
+                  <select
+                    id="guests"
+                    name="guests"
+                    required
+                    className={inputClass}
+                    defaultValue="2"
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                      <option key={n} value={n}>
+                        {n} {n === 1 ? "personne" : "personnes"}
+                      </option>
+                    ))}
+                    <option value="9+">9 personnes ou plus</option>
+                  </select>
+                </Field>
+              </div>
+
+              <Field id="message" label="Message">
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  className={inputClass}
+                  placeholder="Allergies, horaire souhaité, occasion spéciale…"
+                />
+              </Field>
+
+              <Button type="submit" size="lg" className="w-full sm:w-auto">
+                Envoyer ma demande
+              </Button>
+            </form>
+          )}
+        </ScrollReveal>
+      </div>
+    </Section>
+  );
+}
+
+function Field({
+  id,
+  label,
+  required,
+  children,
+}: {
+  id: string;
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <label
+        htmlFor={id}
+        className="mb-2 block text-[11px] uppercase tracking-[0.18em] text-fg-muted"
+      >
+        {label}
+        {required && <span className="text-gold"> *</span>}
+      </label>
+      {children}
+    </div>
+  );
+}

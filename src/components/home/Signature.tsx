@@ -113,7 +113,7 @@ export function Signature() {
 
         {/* NEAR plane — copy & CTA */}
         <motion.div
-          className="relative z-10 mx-auto flex min-h-[90svh] max-w-6xl flex-col justify-end px-5 py-20 sm:px-8 md:min-h-[94svh] md:py-28"
+          className="relative z-10 mx-auto flex min-h-[90svh] max-w-6xl flex-col justify-end px-5 py-14 sm:px-8 md:min-h-[94svh] md:py-20"
           style={reduce ? undefined : { y: nearY }}
         >
           <ScrollReveal direction="up">

@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-charcoal-deep text-white">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_0%,rgba(201,146,58,0.14),transparent),radial-gradient(ellipse_50%_40%_at_100%_100%,rgba(122,42,44,0.18),transparent)]" />
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-3 md:py-20">
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-3 md:py-14">
         <div>
           <p className="font-display text-2xl md:text-3xl">
             <span className="text-gradient-gold">{SITE.shortName}</span>

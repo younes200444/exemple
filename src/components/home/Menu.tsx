@@ -11,20 +11,20 @@ export function Menu() {
   const chefPicks = menuItems.filter((i) => i.chefPick);
 
   return (
-    <Section id="menu" divider className="!py-16 sm:!py-20 md:!py-28">
+    <Section id="menu" divider className="!py-10 sm:!py-12 md:!py-14">
       <ScrollReveal>
-        <div className="mb-12 text-center md:mb-16">
+        <div className="mb-6 text-center md:mb-8">
           <p className="text-[10px] uppercase tracking-[0.34em] text-ember">
             La carte
           </p>
           <h2 className="mt-3 font-display text-4xl font-bold text-fg sm:text-5xl md:text-6xl">
             À table
           </h2>
-          <div className="gold-rule-center mt-5" />
+          <div className="gold-rule-center mt-4" />
         </div>
       </ScrollReveal>
 
-      <ScrollReveal direction="up" className="mb-14 md:mb-20">
+      <ScrollReveal direction="up" className="mb-10 md:mb-12">
         <div className="glow-wine relative overflow-hidden border border-wine/35 bg-gradient-to-br from-cream via-[#fff0e4] to-[#f8dcc8] px-5 py-8 sm:px-10 sm:py-10">
           <p className="mb-6 inline-flex items-center gap-2 border border-ember/45 bg-ember/10 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.3em] text-ember">
             <span className="h-1.5 w-1.5 bg-ember" aria-hidden />
@@ -56,14 +56,14 @@ export function Menu() {
         </div>
       </ScrollReveal>
 
-      <div className="space-y-14 md:space-y-16">
-        {menuSections.map((section, si) => {
-          const items = menuItems.filter((i) => i.category === section.id);
-          return (
-            <ScrollReveal key={section.id} delay={si * 0.03} direction="up">
-              <h3 className="mb-6 text-center font-display text-3xl text-fg sm:text-4xl">
-                {section.label}
-              </h3>
+        <div className="space-y-10 md:space-y-12">
+          {menuSections.map((section, si) => {
+            const items = menuItems.filter((i) => i.category === section.id);
+            return (
+              <ScrollReveal key={section.id} delay={si * 0.03} direction="up">
+                <h3 className="mb-4 text-center font-display text-3xl text-fg sm:text-4xl">
+                  {section.label}
+                </h3>
               <ul className="mx-auto max-w-2xl">
                 {items.map((item) => (
                   <li

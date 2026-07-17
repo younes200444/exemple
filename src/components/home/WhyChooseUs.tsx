@@ -11,13 +11,13 @@ const accents = ["text-ember", "text-gold", "text-wine", "text-olive"] as const;
 
 export function WhyChooseUs() {
   return (
-    <Section id="pourquoi" divider className="!py-16 sm:!py-20 md:!py-24">
+    <Section id="pourquoi" divider className="!py-10 sm:!py-12 md:!py-14">
       <ScrollReveal>
-        <div className="mb-12 text-center md:mb-16">
+        <div className="mb-6 text-center md:mb-8">
           <h2 className="font-display text-4xl font-bold text-fg sm:text-5xl md:text-6xl">
             Pourquoi nous
           </h2>
-          <div className="gold-rule-center mt-5" />
+          <div className="gold-rule-center mt-4" />
         </div>
       </ScrollReveal>
 

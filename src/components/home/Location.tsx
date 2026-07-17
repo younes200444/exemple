@@ -7,7 +7,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function Location() {
   return (
-    <Section id="location" divider>
+    <Section id="location" divider className="!py-10 sm:!py-12 md:!py-14">
       <ScrollReveal>
         <SectionHeading
           eyebrow="Accès"

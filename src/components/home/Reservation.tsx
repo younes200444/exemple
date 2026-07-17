@@ -50,7 +50,7 @@ export function Reservation() {
   };
 
   return (
-    <Section id="reservation" soft divider className="texture-ember">
+    <Section id="reservation" soft divider className="texture-ember !py-10 sm:!py-12 md:!py-14">
       <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <ScrollReveal>

@@ -38,13 +38,13 @@ export function Gallery() {
   }, [active, close, prev, next]);
 
   return (
-    <Section id="gallery" soft divider>
+    <Section id="gallery" soft divider className="!py-10 sm:!py-12 md:!py-14">
       <ScrollReveal>
-        <div className="mb-10 text-center md:mb-14">
+        <div className="mb-6 text-center md:mb-8">
           <h2 className="font-display text-4xl font-bold text-fg sm:text-5xl md:text-6xl">
             Galerie
           </h2>
-          <div className="gold-rule-center mt-5" />
+          <div className="gold-rule-center mt-4" />
         </div>
       </ScrollReveal>
 

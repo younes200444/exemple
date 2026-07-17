@@ -7,7 +7,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 /** Dark contrast beat after Signature — quiet numbers, no aurora. */
 export function Stats() {
   return (
-    <section className="section-dark relative overflow-hidden border-y border-gold/20 py-16 sm:py-20 md:py-24">
+    <section className="section-dark relative overflow-hidden border-y border-gold/20 py-10 sm:py-12 md:py-14">
       <p
         className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none text-center font-display text-[16vw] leading-none text-white/[0.04]"
         aria-hidden

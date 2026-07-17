@@ -11,9 +11,9 @@ export function Philosophy() {
     <Section
       id="savoir-faire"
       divider
-      className="!py-16 sm:!py-20 md:!py-28 texture-wine-light"
+      className="!py-10 sm:!py-12 md:!py-14 texture-wine-light"
     >
-      <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
+      <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-5">
           <ScrollReveal direction="up">
             <p className="text-[10px] uppercase tracking-[0.34em] text-wine">

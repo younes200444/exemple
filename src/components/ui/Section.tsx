@@ -24,7 +24,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "relative scroll-mt-24 overflow-hidden py-16 sm:py-20 md:py-28",
+        "relative scroll-mt-24 overflow-hidden py-10 sm:py-12 md:py-14",
         soft && "texture-paper",
         muted && "bg-bg-muted",
         dark && "bg-charcoal text-white",
@@ -59,7 +59,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "mb-12 max-w-2xl sm:mb-14 md:mb-20",
+        "mb-8 max-w-2xl sm:mb-10 md:mb-12",
         align === "center" && "mx-auto text-center",
         className
       )}

@@ -29,7 +29,7 @@ export function Reviews() {
   };
 
   return (
-    <Section id="reviews" muted divider className="texture-wine-light">
+    <Section id="reviews" muted divider className="texture-wine-light !py-10 sm:!py-12 md:!py-14">
       <ScrollReveal>
         <SectionHeading
           eyebrow="Avis"
